@@ -17,6 +17,10 @@ const episodes = () => {
     setIsSearching(true);
   };
 
+  useEffect(() => {
+    console.log(isSearching);
+  }, [isSearching]);
+
   return (
     <div className="episodesPage">
       <div className="top">
@@ -35,7 +39,7 @@ const episodes = () => {
             clear
           </button>
         ) : (
-          <>
+          <div className="season-outer">
             <div className="season">season:</div>
             <div className="seasons-container">
               <input
@@ -94,24 +98,27 @@ const episodes = () => {
               </label>
               <span className="glider"></span>
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className="episodes-container">
         <div className="ipod-player">
           <div className="featuredEpisodeImageContainer">
-            <Image
-              className="image"
-              src={episode && episode.itunes.image}
-              alt="Featured Episode Cover Image"
-              width={100}
-              height={100}
-            />
+            {episode && (
+              <Image
+                className="image"
+                src={episode && episode.itunes.image}
+                alt="Featured Episode Cover Image"
+                width={100}
+                height={100}
+              />
+            )}
+
             <div className="title">{episode && episode.title}</div>
           </div>
           <button
             className="controlIconContianer"
-            onClick={() => setPlay(!play)}
+            onClick={() => episode && setPlay(!play)}
           >
             <Image
               src={`/icons/${play ? "pause" : "play"}.svg`}

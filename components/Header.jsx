@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import useScrollDirection from "@/hooks/scrollDirectionHook";
 
 const Header = () => {
   const scrollDirection = useScrollDirection();
+
   return (
     <div className={`header ${scrollDirection === "down" && "disappear"}`}>
       <div className="inside">
@@ -39,11 +40,11 @@ const Header = () => {
               resources
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="link" href="#">
               merch
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

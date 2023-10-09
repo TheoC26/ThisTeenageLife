@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 //firebase imports for adding doc
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.js";
-import CustomEditor, { Editor } from "@/components/CustomEditor.jsx";
+// import CustomEditor, { Editor } from "@/components/CustomEditor.jsx";
+import Editor from "@/components/CustomEditor.jsx";
 
 const contribute = () => {
   const [author, setAuthor] = useState("");
@@ -14,8 +15,12 @@ const contribute = () => {
   const [image, setImage] = useState("");
   const [type, setType] = useState("poem");
 
+
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (author == "" || email == "" || title == "" || content == "") return;
     try {
       const docRef = await addDoc(collection(db, "posts"), {
         author: author,
@@ -142,7 +147,10 @@ const contribute = () => {
           />
           {(type == "poem" || type == "story" || type == "article") && (
             <>
-              <textarea
+              <div className="lexicalEditor">
+                <Editor setContent={setContent} />
+              </div>
+              {/* <textarea
                 name="content"
                 id="content"
                 cols="30"
@@ -151,14 +159,17 @@ const contribute = () => {
                 value={content}
                 style={{ resize: "none" }}
                 onChange={(e) => setContent(e.target.value)}
-              ></textarea>
+              ></textarea> */}
             </>
           )}
           {(type == "drawing" || type == "photo") && (
             <>
-              <input type="file" name="file" id="file"
+              <input
+                type="file"
+                name="file"
+                id="file"
                 onChange={(e) => setImage(e.target.files[0])}
-               />
+              />
               <textarea
                 name="content"
                 id="content"
@@ -179,7 +190,6 @@ const contribute = () => {
           <button type="submit">Submit For Review</button>
         </form>
       </div>
-      <Editor />
     </main>
   );
 };

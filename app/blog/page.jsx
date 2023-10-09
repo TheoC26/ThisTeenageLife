@@ -120,7 +120,10 @@ const blog = () => {
 
   return (
     <main className="blogPage">
-      <div className="heading">Written by teens for teens</div>
+      <div className="heading">
+        <div className="tape-section"></div>
+        TTL Blog: For Teens by Teens
+        </div>
       <Polaroids featured={posts.filter((post) => post.featured == true)} />
       <SearchBar
         type="episode"
@@ -134,7 +137,47 @@ const blog = () => {
         <div>
           {posts
             .filter((post) => !post.featured && post.published)
-            .map((post, i) => (
+            .map(
+              (post, i) =>
+                i <= 4 && (
+                  <TapeRow
+                    key={i}
+                    title={post.title}
+                    type={post.type}
+                    name={post.author}
+                    id={post.id}
+                  />
+                )
+            )}
+        </div>
+        <TapedPaper />
+      </div>
+      <div className="big-right">
+        <TapedPaper />
+        <div>
+          {posts
+            .filter((post) => !post.featured && post.published)
+            .map(
+              (post, i) =>
+                i > 4 &&
+                i <= 9 && (
+                  <TapeRow
+                    key={i}
+                    title={post.title}
+                    type={post.type}
+                    name={post.author}
+                    id={post.id}
+                  />
+                )
+            )}
+        </div>
+      </div>
+
+      {posts
+        .filter((post) => !post.featured && post.published)
+        .map(
+          (post, i) =>
+            i > 9 && (
               <TapeRow
                 key={i}
                 title={post.title}
@@ -142,34 +185,8 @@ const blog = () => {
                 name={post.author}
                 id={post.id}
               />
-            ))}
-          {/* <TapeRow />
-          <TapeRow />
-          <TapeRow />
-          <TapeRow />
-          <TapeRow /> */}
-        </div>
-        <TapedPaper />
-      </div>
-      <div className="big-right">
-        <TapedPaper />
-        <div>
-          <TapeRow />
-          <TapeRow />
-          <TapeRow />
-          <TapeRow />
-          <TapeRow />
-        </div>
-      </div>
-
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
-      <TapeRow />
+            )
+        )}
 
       <Link href="/blog/contribute">Wanna contribute to the blog?</Link>
 

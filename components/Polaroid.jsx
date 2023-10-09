@@ -6,7 +6,7 @@ const Polaroid = ({ title, type, name, date, slug, imagePath }) => {
   return (
     <Link href={`/blog/${slug}`} style={{ textDecoration: "none" }}>
       <div className="polaroid">
-        {/* <div className="tape-section"></div> */}
+        <div className="polaroid-tape-section"></div>
         <div className="type">{type}</div>
         <div className="imagecontainer">
           <Image

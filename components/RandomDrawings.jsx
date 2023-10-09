@@ -19,7 +19,7 @@ const RandomDrawings = () => {
    const [height, setHeight] = useState("");
   useEffect(() => {
     const numberOfDrawings = Math.round(
-      document.body.offsetHeight / (window.innerHeight / 3)
+      document.body.offsetHeight / (window.innerHeight / 2)
     );
     let drawings = createDrawingsArray(numberOfDrawings);
     while (doesArrayHaveDuplicates(drawings)) {
@@ -47,7 +47,7 @@ const RandomDrawings = () => {
           key={i}
           className={`BG-Image ${i % 2 === 0 ? "left" : "right"}`}
           style={{
-            top: i * (window.innerHeight / 3) + Math.random() * 150 + 100 + "px",
+            top: i * (window.innerHeight / 3) + Math.random() * 150 - 80 + "px",
           }}
           src={`/BG-Images/${drawing}`}
           alt="Random drawing"

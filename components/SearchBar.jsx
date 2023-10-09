@@ -11,7 +11,7 @@ const SearchBar = ({ type, search, setSearch, submit, setIsSearching }) => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           // onFocus={() => setIsSearching(true)}
-          onBlur={() => setTimeout(() => setIsSearching(false), 150) } 
+          // onBlur={() => {setTimeout(() => setIsSearching(false), 150); console.log("clicked 2")} } 
         />
         <input type="submit" value="search" className="submit" />
       </div>

@@ -14,7 +14,7 @@ export function Episodesv2Provider({ children }) {
   const playAnimationRef = useRef(null);
   // const audioRef = useRef(null);
   const [episodes, setEpisodes] = useState([]);
-  const [episodeNumber, setEpisodeNumber] = useState(0);
+  const [episodeNumber, setEpisodeNumber] = useState(-1);
   const [episode, setEpisode] = useState(null);
   const [play, setPlay] = useState(false);
   const [autoPlay, setAutoPlay, autoPlayRef] = useStateRef(false);
@@ -35,17 +35,17 @@ export function Episodesv2Provider({ children }) {
     fetchRSS();
   }, []);
   useEffect(() => {
+    let tempPlay = false;
     setEpisode(episodes[episodeNumber]);
-    if (episodeNumber != 0) {
+    if (episodeNumber != -1) {
       setAutoPlay(true);
+      tempPlay = true;
     }
-    if (autoPlayRef.current) {
-      // audioRef.current.play();
+    if (autoPlayRef.current || tempPlay) {
       setPlay(false);
       setTimeout(() => setPlay(true), 100);
       setCurrentTime(0);
     } else {
-      // audioRef.current.pause();
       setPlay(false);
       setCurrentTime(0);
     }

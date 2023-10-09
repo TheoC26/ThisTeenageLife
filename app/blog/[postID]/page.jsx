@@ -1,5 +1,4 @@
 "use client";
-
 import FeaturedBlock from "@/components/FeaturedBlock";
 import RichContentBlock from "@/components/RichContentBlock";
 import SearchBar from "@/components/SearchBar";
@@ -20,70 +19,118 @@ import { db } from "../../../firebase.js";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import BlogPostImage from "@/components/BlogPostImage";
+import RandomDrawings from "@/components/RandomDrawings";
 
 const blogPost = () => {
   const { postID } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [posts, setPosts] = useState(null);
   const [postData, setPostData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState("")
+  const [editedContent, setEditedContent] = useState("");
 
-const getPosts = async () => {
-  let userRef;
-  onAuthStateChanged(auth, async (user) => {
-    userRef = user;
-  });
-  try {
-    const docRef = doc(db, `/posts/`, postID);
-    const docSnap = await getDoc(docRef);
+  const getPosts = async () => {
+    let userRef;
+    onAuthStateChanged(auth, async (user) => {
+      userRef = user;
+    });
+    try {
+      const docRef = doc(db, `/posts/`, postID);
+      const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      let data = docSnap.data();
-      console.log(docSnap.data());
-      if (!docSnap.data().published && !userRef) {
-        window.location.replace("/admin");
+      if (docSnap.exists()) {
+        let data = docSnap.data();
+        if (!docSnap.data().published && !userRef) {
+          window.location.replace("/admin");
+        }
+        if (docSnap.data().imageID) {
+          const storageRef = ref(storage, `posts/${docSnap.data().imageID}`);
+          const url = await getDownloadURL(storageRef);
+          data.imageURL = url;
+        }
+        const unixTimestamp = docSnap.data().date.seconds;
+        const milliseconds = unixTimestamp * 1000;
+        const dateObject = new Date(milliseconds);
+        data.formattedDate =
+          dateObject.getMonth() +
+          1 +
+          "/" +
+          dateObject.getDate() +
+          "/" +
+          dateObject.getFullYear();
+        setPostData(data);
       }
-      if (docSnap.data().imageID) {
-        const storageRef = ref(storage, `posts/${docSnap.data().imageID}`);
-        const url = await getDownloadURL(storageRef);
-        data.imageURL = url;
-      }
-      const unixTimestamp = docSnap.data().date.seconds;
-      const milliseconds = unixTimestamp * 1000;
-      const dateObject = new Date(milliseconds);
-      data.formattedDate =
-        dateObject.getMonth() +
-        1 +
-        "/" +
-        dateObject.getDate() +
-        "/" +
-        dateObject.getFullYear();
-      setPostData(data);
+    } catch (err) {
+      setError("Failed to load sources");
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    setError("Failed to load sources");
-    console.log(err);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   useEffect(() => {
     getPosts();
   }, []);
   useEffect(() => {
-    postData && setEditedContent(postData.content)
-  }, [postData])
+    postData && setEditedContent(postData.content);
+  }, [postData]);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const collectionRef = collection(db, "/posts");
+        const q = query(collectionRef, orderBy("date", "desc"));
+        const docSnap = await getDocs(q);
+        var tempArr = [];
+        docSnap.forEach((doc) => {
+          tempArr.push(
+            Object.assign(doc.data(), {
+              id: doc.id,
+              formattedDate: convertDateToFormattedDate(doc.data().date),
+            })
+          );
+        });
+        setPosts(tempArr);
+      } catch (err) {
+        setError("Failed to load sources");
+        console.log(err);
+      } finally {
+        // setLoading(false);
+      }
+    };
+    getPosts();
+  }, []);
+
+  function convertDateToFormattedDate(date) {
+    const unixTimestamp = date.seconds;
+    const milliseconds = unixTimestamp * 1000;
+    const dateObject = new Date(milliseconds);
+    return (
+      dateObject.getMonth() +
+      1 +
+      "/" +
+      dateObject.getDate() +
+      "/" +
+      dateObject.getFullYear()
+    );
+  }
+
+  // function that takes in a string of html and removes all the tags
+  function removeTags(str) {
+    if (str === null || str === "") return false;
+    else str = str.toString();
+    console.log(str, str.replace(/(<([^>]+)>)/gi, ""));
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
 
   const submitEdits = async () => {
     const docRef = doc(db, `/posts/`, postID);
     await updateDoc(docRef, {
-      content: editedContent
-    })
-    setIsEditing(false)
+      content: editedContent,
+    });
+    setIsEditing(false);
     getPosts();
-  }
+  };
 
   if (loading) return <div className="loading">Loading...</div>;
   if (!loading && !postData)
@@ -91,6 +138,7 @@ const getPosts = async () => {
 
   return (
     <main className="blogPostPage">
+      <RandomDrawings />
       {/* <SearchBar type="blog" /> */}
       <div className="heading">
         <div className="title">{postData.title}</div>
@@ -98,33 +146,61 @@ const getPosts = async () => {
           {postData.formattedDate} • {postData.author}
         </div>
       </div>
+      <div className="separator" style={{ width: "50%" }}></div>
       {postData.imageID ? (
         <div>
-          <BlogPostImage
-            url={postData.imageURL}
-            title={postData.title}
-          />
+          <BlogPostImage url={postData.imageURL} title={postData.title} />
           <div className="description">{postData.description}</div>
         </div>
       ) : (
         <>
-        {(!postData.published && !isEditing) && (
-          <button onClick={() => setIsEditing(true)}>make edits</button>
-        )}
-        {isEditing ? (
-          <>
-          <textarea name="content" id="" cols="100" rows="30" value={editedContent} onChange={(e) => setEditedContent(e.target.value)}></textarea>
-          <button onClick={submitEdits}>submit</button>
-          </>
-        ) : (
-          <RichContentBlock content={postData.content} />
+          {!postData.published && !isEditing && (
+            <button onClick={() => setIsEditing(true)}>make edits</button>
+          )}
+          {isEditing ? (
+            <>
+              <textarea
+                name="content"
+                id=""
+                cols="100"
+                rows="30"
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+              ></textarea>
+              <button onClick={submitEdits}>submit</button>
+            </>
+          ) : (
+            <RichContentBlock content={postData.content} />
           )}
         </>
       )}
 
       <div className="separator"></div>
       <div className="col-two">
-        <FeaturedBlock
+        {posts &&
+          posts
+            .filter(
+              (post) =>
+                !post.featured &&
+                post.published &&
+                post.id != postID &&
+                post.type == postData.type
+            )
+            .map(
+              (post, i) =>
+                i < 4 && (
+                  <FeaturedBlock
+                    title={post.title}
+                    type={post.type}
+                    quote={post.content && removeTags(post.content).slice(0, 150) + "..."}
+                    name={post.author}
+                    date={post.formattedDate}
+                    url={`/blog/${post.id}`}
+                    readMore={true}
+                  />
+                )
+            )}
+        {/* <FeaturedBlock
           title="My Life through the Years"
           type="story"
           quote="In spring, I shall love you! In summer, I shall weep for you;In autumn, I shall grow tall and sturdy Into a tree so evergreen;And I shall be your..."
@@ -155,7 +231,7 @@ const getPosts = async () => {
           name="Theodore Chan"
           date="6/23/2023"
           readMore={true}
-        />
+        /> */}
       </div>
     </main>
   );

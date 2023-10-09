@@ -16,7 +16,7 @@ const TapeRow = ({ title, type, name, id }) => {
         width: Math.random() * 10 + 95 + "%",
       }}
     >
-      <div className="title">{title}</div>
+      <div className="title">{title.slice(0, 35)}...</div>
       <div className="type-name">
         {type} • {name}
       </div>

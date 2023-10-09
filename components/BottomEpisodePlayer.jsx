@@ -12,6 +12,16 @@ const BottomEpisodePlayer = () => {
   const audioRef = useRef(null);
 
   const [isShowing, setIsShowing] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(0);
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     sliderRef.current.addEventListener("mousedown", (e) => {
@@ -62,7 +72,7 @@ const BottomEpisodePlayer = () => {
   }
 
   return (
-    <div style={!autoPlay && {display: "none"}}>
+    <div style={!autoPlay && { display: "none" }}>
       <audio
         src={episode && episode.enclosure.url}
         ref={audioRef}
@@ -79,7 +89,12 @@ const BottomEpisodePlayer = () => {
         <div className="right-side">
           <div className="title">{episode && episode.title}</div>
           <div className="description">
-            {episode && episode.contentSnippet.slice(0, 150)}...
+            {episode &&
+              (screenWidth > 1000
+                ? episode.contentSnippet.slice(0, 150)
+                : screenWidth > 420 ? episode.contentSnippet.slice(0, 100)
+                : episode.contentSnippet.slice(0, 50))}
+            ...
           </div>
         </div>
         <button className="controlIconContianer" onClick={() => setPlay(!play)}>

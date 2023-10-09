@@ -16,16 +16,10 @@ const Footer = () => {
         <div className="category">
           <div className="title">contact</div>
           <Link href="#" className="link">
-            Twitter
+            Email
           </Link>
           <Link href="#" className="link">
             Intagram
-          </Link>
-          <Link href="#" className="link">
-            Facebook
-          </Link>
-          <Link href="#" className="link">
-            email
           </Link>
         </div>
         <div className="category">
@@ -45,23 +39,20 @@ const Footer = () => {
           <Link href="#" className="link">
             recources
           </Link>
-          <Link href="#" className="link">
+          {/* <Link href="#" className="link">
             merch
-          </Link>
+          </Link> */}
         </div>
         <div className="category">
           <div className="title">contribute</div>
           <Link href="#" className="link">
-            create a blog
+            create a blog post
           </Link>
           <Link href="#" className="link">
             join the team
           </Link>
           <Link href="#" className="link">
             send a message
-          </Link>
-          <Link href="#" className="link">
-            request something
           </Link>
         </div>
         <div className="category">
