@@ -4,7 +4,7 @@ import useStateRef from "@/hooks/stateRef";
 import Parser from "rss-parser";
 
 const Episodesv2Context = React.createContext();
-const RSS_URL = `http://feeds.libsyn.com/169844/rss/`;
+const RSS_URL = `https://feeds.libsyn.com/169844/rss/`;
 // const RSS_URL = `/rss.xml`; // for offline testing
 
 export function useEpisodesv2() {
