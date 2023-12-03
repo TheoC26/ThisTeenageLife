@@ -35,11 +35,11 @@ const Header = () => {
               about
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="link" href="/recources">
               resources
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <Link className="link" href="#">
               merch

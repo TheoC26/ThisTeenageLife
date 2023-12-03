@@ -14,13 +14,20 @@ const contribute = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [type, setType] = useState("poem");
+  const [submitConformation, setSubmitConformation] = useState("false");
 
 
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (author == "" || email == "" || title == "" || content == "") return;
+    if (author == "" || email == "" || title == "" || content == "") {
+      setSubmitConformation("fields");
+      setTimeout(() => {
+        setSubmitConformation("false");
+      }, 3000);
+      return;
+    };
     try {
       const docRef = await addDoc(collection(db, "posts"), {
         author: author,
@@ -36,12 +43,22 @@ const contribute = () => {
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
+      setSubmitConformation("error");
+
     } finally {
       setAuthor("");
       setEmail("");
       setTitle("");
       setContent("");
-      // tk: add confirmation message
+
+      if (submitConformation != "error" && submitConformation != "fields") {
+        console.log("submitted")
+        setSubmitConformation("true");
+      }
+      
+      setTimeout(() => {
+        setSubmitConformation("false");
+      }, 3000);
     }
   };
 
@@ -187,7 +204,15 @@ const contribute = () => {
             By submitting you are agreeing to the{" "}
             <span>terms and conditions</span>
           </div>
-          <button type="submit">Submit For Review</button>
+          <button type="submit" className={submitConformation}>
+            {submitConformation == "true"
+              ? "Submitted for Review"
+              : submitConformation == "false"
+              ? "Submit For Review"
+              : submitConformation == "fields"
+              ? "Fill out all Fields"
+              : "Submission Failed"}
+          </button>
         </form>
       </div>
     </main>

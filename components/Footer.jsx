@@ -36,9 +36,9 @@ const Footer = () => {
           <Link href="#" className="link">
             about
           </Link>
-          <Link href="#" className="link">
+          {/* <Link href="#" className="link">
             recources
-          </Link>
+          </Link> */}
           {/* <Link href="#" className="link">
             merch
           </Link> */}
@@ -48,7 +48,7 @@ const Footer = () => {
           <Link href="#" className="link">
             create a blog post
           </Link>
-          <Link href="#" className="link">
+          <Link href="mailto:team@thisteenagelife.org" className="link">
             join the team
           </Link>
           <Link href="#" className="link">

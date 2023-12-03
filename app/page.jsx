@@ -34,6 +34,7 @@ export default function Home() {
   const ipodRefs = [useRef(null), useRef(null), useRef(null)];
   const [screenWidth, setScreenWidth] = useState(0);
   const [screenHeight, setScreenHeight] = useState(0);
+  const [scroll, setScroll] = useState(0);
   useEffect(() => {
     setScreenWidth(window.innerWidth);
     setScreenHeight(window.innerHeight);
@@ -43,6 +44,7 @@ export default function Home() {
       setScreenHeight(window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", () => {setScroll(window.scrollY)})
   }, []);
 
   useEffect(() => {
@@ -341,141 +343,171 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="homePageV2">
-      <div className="marker"></div>
-      <div className="hero">
-        <Image
-          src={"/TTL-Mouth/emptyMouth.png"}
-          alt="empty mouth"
-          className="center"
-          width={1000}
-          height={1000}
-          style={{ top: "45%", left: "50%", width: "48%" }}
-          ref={emptyMouthRef}
-        />
-        <Image
-          src={"/TTL-Mouth/text.png"}
-          alt="This Teenage Life"
-          width={1000}
-          height={1000}
-          className="center"
-          style={{ top: "45%", left: "50%", width: "32%" }}
-          ref={textRef}
-        />
-        <Image
-          src={"/TTL-Mouth/microphone.png"}
-          alt="microphone"
-          className="center"
-          width={1000}
-          height={1000}
-          style={{
-            top: "45%",
-            left: "49%",
-            width: "6.8%",
-            transform: "translate(-50%, -40%)",
-          }}
-          ref={microphoneRef}
-        />
-        <Image
-          src={"/TTL-Mouth/MouthTopLeft.png"}
-          alt="mouth"
-          width={1000}
-          height={1000}
-          style={{
-            left: "17%",
-            top: (screenHeight - screenWidth) / 40 + 23 + "%",
-            width: "25%",
-          }}
-          ref={mouthTopLeftRef}
-        />
-        <Image
-          src={"/TTL-Mouth/MouthTopRight.png"}
-          alt="mouth"
-          width={1000}
-          height={1000}
-          style={{
-            right: "20%",
-            top: (screenHeight - screenWidth) / 40 + 23 + "%",
-            width: "20%",
-          }}
-          ref={mouthTopRightRef}
-        />
-        <Image
-          src={"/TTL-Mouth/MouthBottomLeft.png"}
-          alt="mouth"
-          width={1000}
-          height={1000}
-          style={{
-            left: "18%",
-            bottom: (screenHeight - screenWidth) / 50 + 35 + "%",
-            width: "22%",
-          }}
-          ref={mouthBottomLeftRef}
-        />
-        <Image
-          src={"/TTL-Mouth/MouthBottomRight.png"}
-          alt="mouth"
-          width={1000}
-          height={100}
-          style={{
-            right: "18%",
-            bottom: (screenHeight - screenWidth) / 50 + 35 + "%",
-            width: "17%",
-          }}
-          ref={mouthBottomRightRef}
-        />
+    <>
+      <main className="homePageV2">
+        <div
+          class="downarrow"
+          style={{ display: scroll > 15 ? "none" : "block" }}
+        >
+          <div class="left"></div>
+          <div class="right"></div>
+        </div>
+
+        <div className="marker"></div>
+        <div className="hero">
+          <Image
+            src={"/TTL-Mouth/emptyMouth.png"}
+            alt="empty mouth"
+            className="center"
+            width={1000}
+            height={1000}
+            style={{ top: "45%", left: "50%", width: "48%" }}
+            ref={emptyMouthRef}
+          />
+          <Image
+            src={"/TTL-Mouth/text.png"}
+            alt="This Teenage Life"
+            width={1000}
+            height={1000}
+            className="center"
+            style={{ top: "45%", left: "50%", width: "32%" }}
+            ref={textRef}
+          />
+          <Image
+            src={"/TTL-Mouth/microphone.png"}
+            alt="microphone"
+            className="center"
+            width={1000}
+            height={1000}
+            style={{
+              top: "45%",
+              left: "49%",
+              width: "6.8%",
+              transform: "translate(-50%, -40%)",
+            }}
+            ref={microphoneRef}
+          />
+          <Image
+            src={"/TTL-Mouth/MouthTopLeft.png"}
+            alt="mouth"
+            width={1000}
+            height={1000}
+            style={{
+              left: "17%",
+              top: (window.innerHeight - window.innerWidth) / 40 + 23 + "%",
+              width: "25%",
+            }}
+            ref={mouthTopLeftRef}
+          />
+          <Image
+            src={"/TTL-Mouth/MouthTopRight.png"}
+            alt="mouth"
+            width={1000}
+            height={1000}
+            style={{
+              right: "20%",
+              top: (window.innerHeight - window.innerWidth) / 40 + 23 + "%",
+              width: "20%",
+            }}
+            ref={mouthTopRightRef}
+          />
+          <Image
+            src={"/TTL-Mouth/MouthBottomLeft.png"}
+            alt="mouth"
+            width={1000}
+            height={1000}
+            style={{
+              left: "18%",
+              bottom: (window.innerHeight - window.innerWidth) / 50 + 35 + "%",
+              width: "22%",
+            }}
+            ref={mouthBottomLeftRef}
+          />
+          <Image
+            src={"/TTL-Mouth/MouthBottomRight.png"}
+            alt="mouth"
+            width={1000}
+            height={100}
+            style={{
+              right: "18%",
+              bottom: (window.innerHeight - window.innerWidth) / 50 + 35 + "%",
+              width: "17%",
+            }}
+            ref={mouthBottomRightRef}
+          />
+        </div>
+        <div
+          className="paralax"
+          style={{ width: "20rem" }}
+          ref={polaroidRefs[0]}
+        >
+          <Polaroid
+            title={"title"}
+            type={"poem"}
+            name={"author"}
+            date={"date"}
+            slug={"poem.id"}
+            imagePath={"/BG-Images/BG-Image-0.png"}
+          />
+        </div>
+        <div
+          className="paralax"
+          style={{ width: "20rem" }}
+          ref={polaroidRefs[1]}
+        >
+          <Polaroid
+            title={"title"}
+            type={"poem"}
+            name={"author"}
+            date={"date"}
+            slug={"poem.id"}
+            imagePath={"/BG-Images/BG-Image-0.png"}
+          />
+        </div>
+        <div
+          className="paralax"
+          style={{ width: "20rem" }}
+          ref={polaroidRefs[2]}
+        >
+          <Polaroid
+            title={"title"}
+            type={"poem"}
+            name={"author"}
+            date={"date"}
+            slug={"poem.id"}
+            imagePath={"/BG-Images/BG-Image-0.png"}
+          />
+        </div>
+        <div className="paralax" ref={ipodRefs[0]}>
+          <IpodPlayer
+            item={episodes[0]}
+            setEpisodeNumber={setEpisodeNumber}
+            episodes={episodes}
+          />
+        </div>
+        <div className="paralax" ref={ipodRefs[1]}>
+          <IpodPlayer
+            item={episodes[1]}
+            setEpisodeNumber={setEpisodeNumber}
+            episodes={episodes}
+          />
+        </div>
+        <div className="paralax" ref={ipodRefs[2]}>
+          <IpodPlayer
+            item={episodes[2]}
+            setEpisodeNumber={setEpisodeNumber}
+            episodes={episodes}
+          />
+        </div>
+      </main>
+      <div className="homePageBottom">
+        <a href="/episodes" className="episodes">
+          View our episodes!
+        </a>
+        <a href="/blog" className="blog">
+          Visit our blog!
+        </a>
       </div>
-      <div className="paralax" style={{ width: "20rem" }} ref={polaroidRefs[0]}>
-        <Polaroid
-          title={"title"}
-          type={"poem"}
-          name={"author"}
-          date={"date"}
-          slug={"poem.id"}
-          imagePath={"/BG-Images/BG-Image-0.png"}
-        />
-      </div>
-      <div className="paralax" style={{ width: "20rem" }} ref={polaroidRefs[1]}>
-        <Polaroid
-          title={"title"}
-          type={"poem"}
-          name={"author"}
-          date={"date"}
-          slug={"poem.id"}
-          imagePath={"/BG-Images/BG-Image-0.png"}
-        />
-      </div>
-      <div className="paralax" style={{ width: "20rem" }} ref={polaroidRefs[2]}>
-        <Polaroid
-          title={"title"}
-          type={"poem"}
-          name={"author"}
-          date={"date"}
-          slug={"poem.id"}
-          imagePath={"/BG-Images/BG-Image-0.png"}
-        />
-      </div>
-      <div className="paralax" ref={ipodRefs[0]}>
-        <IpodPlayer
-          item={episodes[0]}
-          setEpisodeNumber={setEpisodeNumber}
-          episodes={episodes}
-        />
-      </div>
-      <div className="paralax" ref={ipodRefs[1]}>
-        <IpodPlayer
-          item={episodes[1]}
-          setEpisodeNumber={setEpisodeNumber}
-          episodes={episodes}
-        />
-      </div>
-      <div className="paralax" ref={ipodRefs[2]}>
-        <IpodPlayer
-          item={episodes[2]}
-          setEpisodeNumber={setEpisodeNumber}
-          episodes={episodes}
-        />
-      </div>
-    </main>
+    </>
   );
 }
