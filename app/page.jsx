@@ -32,19 +32,33 @@ export default function Home() {
   const mouthBottomRightRef = useRef(null);
   const polaroidRefs = [useRef(null), useRef(null), useRef(null)];
   const ipodRefs = [useRef(null), useRef(null), useRef(null)];
-  const [screenWidth, setScreenWidth] = useState(0);
-  const [screenHeight, setScreenHeight] = useState(0);
+  const [windowDimensions, setWindowDimensions] = useState({width: 0, height: 0});
   const [scroll, setScroll] = useState(0);
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
-    setScreenHeight(window.innerHeight);
 
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-      setScreenHeight(window.innerHeight);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY);
+    });
+  }, []);
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", () => {setScroll(window.scrollY)})
+
+    // Initial dimensions
+    updateWindowDimensions();
+
+    // Event listener for window resize
+    window.addEventListener("resize", updateWindowDimensions);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateWindowDimensions);
+    };
   }, []);
 
   useEffect(() => {
@@ -344,6 +358,12 @@ export default function Home() {
 
   return (
     <>
+      <div className="homePageV2Mobile hidden">
+        <div className="hero">
+          <Image src={"/TTL-Mouth/fullMouth.png"} alt="empty mouth" width={500} height={500} />
+
+        </div>
+      </div>
       <main className="homePageV2">
         <div
           class="downarrow"
@@ -380,10 +400,10 @@ export default function Home() {
             width={1000}
             height={1000}
             style={{
-              top: "45%",
+              top: "52%",
               left: "49%",
               width: "6.8%",
-              transform: "translate(-50%, -40%)",
+              transform: "translate(-50%, -50%)",
             }}
             ref={microphoneRef}
           />
@@ -394,7 +414,7 @@ export default function Home() {
             height={1000}
             style={{
               left: "17%",
-              top: (window.innerHeight - window.innerWidth) / 40 + 23 + "%",
+              top: (815 - 1420) / 40 + 23 + "%",
               width: "25%",
             }}
             ref={mouthTopLeftRef}
@@ -406,7 +426,7 @@ export default function Home() {
             height={1000}
             style={{
               right: "20%",
-              top: (window.innerHeight - window.innerWidth) / 40 + 23 + "%",
+              top: (815 - 1420) / 40 + 23 + "%",
               width: "20%",
             }}
             ref={mouthTopRightRef}
@@ -418,7 +438,7 @@ export default function Home() {
             height={1000}
             style={{
               left: "18%",
-              bottom: (window.innerHeight - window.innerWidth) / 50 + 35 + "%",
+              bottom: (815 - 1420) / 50 + 35 + "%",
               width: "22%",
             }}
             ref={mouthBottomLeftRef}
@@ -430,7 +450,7 @@ export default function Home() {
             height={100}
             style={{
               right: "18%",
-              bottom: (window.innerHeight - window.innerWidth) / 50 + 35 + "%",
+              bottom: (815 - 1420) / 50 + 35 + "%",
               width: "17%",
             }}
             ref={mouthBottomRightRef}
