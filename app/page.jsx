@@ -279,7 +279,7 @@ export default function Home() {
           </div>
           <div className="testimonial testimonial-1" ref={testimonialRefs[1]}>
             <Image
-              src={"/speechBubbles/speechBubble3.png"}
+              src={"/speechBubbles/SpeechBubble3.png"}
               alt="speech bubble"
               width={1000}
               height={1000}
@@ -293,7 +293,7 @@ export default function Home() {
           </div>
           <div className="testimonial testimonial-2" ref={testimonialRefs[2]}>
             <Image
-              src={"/speechBubbles/speechBubble2.png"}
+              src={"/speechBubbles/SpeechBubble2.png"}
               alt="speech bubble"
               width={1000}
               height={1000}

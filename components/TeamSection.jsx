@@ -43,7 +43,7 @@ const TeamSection = () => {
                   <div className="person" key={i}>
                     <Image
                       priority={true}
-                      src={`/teamPhotos/${name.replace(" ", "")}.jpeg`}
+                      src={`/teamPhotos/${name.replace(" ", "").toLocaleLowerCase()}.jpeg`}
                       alt="person"
                       width={100}
                       height={100}
