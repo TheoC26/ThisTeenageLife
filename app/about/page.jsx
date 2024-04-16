@@ -1,4 +1,6 @@
+import FeaturedBlock from "@/components/FeaturedBlock";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -8,24 +10,35 @@ const page = () => {
       {/* <TopMediaPlayer item={episodes[0]} autoPlay={false} page={"home"} /> */}
 
       <h2>
-        Who are we?
-        <div className="tape-section"></div>
+        <Image src="/navText/aboutus.png" width={300} height={50} />
       </h2>
-      <div className="col-two">
-        <video
-          src="/placeholdervid.mp4"
-          controls
-          style={{ border: "5px solid white", borderRadius: "15px" }}
-        ></video>
-        <div className="text">
-          This Teenage Life (TTL) is a podcast about the ideas, stories, and
-          unique perspectives of teenagers in the middle of their own growth as
-          humans. The episodes that you’ll hear, and people you’ll meet, are
-          meant to offer a a sense of connection. For us, it's a way to process
-          what we feel and think.
+      <center>
+        <div className="video">
+          <Image
+            src="/decoratives/TV_under.png"
+            className="under"
+            width={1000}
+            height={1000}
+          />
+          <video src="/placeholdervid.mp4" controls></video>
+          <Image
+            src="/decoratives/TV_over.png"
+            className="over"
+            width={1000}
+            height={1000}
+          />
         </div>
-      </div>
-      <div className="testimonial">
+
+        <div className="text">
+          It can be easy to think "I'm the only one with this issue," but
+          hearing other young people share their experiences can normalize
+          conversations around sensitive subjects and make the world feel less
+          lonely, less big, and a little more loving.
+          <br /> - Cloe Moreno
+        </div>
+      </center>
+
+      {/* <div className="testimonial">
         <div className="quote">
           It can be easy to think "I'm the only one with this issue," but
           hearing other young people share their experiences can normalize
@@ -35,9 +48,87 @@ const page = () => {
         <div className="author">
           — Cloe Moreno, This Teenage Life artist and contributor
         </div>
-      </div>
+      </div> */}
 
-      <h2 style={{ marginTop: "3rem" }}>
+      <h1>Partnerships</h1>
+      <center>
+        <div className="partnercontainer">
+          <Link href="https://www.asu.edu/" className="partner">
+            Arizona State University
+          </Link>
+          <Link
+            href="https://www.brown.edu/academics/college/swearer/"
+            className="partner"
+          >
+            Brown University's Swearer Center
+          </Link>
+
+          <Link
+            href="https://digitalthriving.gse.harvard.edu/"
+            className="partner"
+          >
+            Center for Digital Thriving
+          </Link>
+          <Link
+            href="https://connectedwellbeing.org/impact-studio/"
+            className="partner"
+          >
+            Connected Wellbeing Impact Studio
+          </Link>
+          <Link
+            href="https://www.headstreaminnovation.com/"
+            className="partner"
+          >
+            Headstream
+          </Link>
+          <Link href="https://www.unicefusa.org/" className="partner">
+            UNICEF USA
+          </Link>
+          <Link href="https://xqsuperschool.org/" className="partner">
+            XQ Institute
+          </Link>
+        </div>
+
+        <h1>Media Features</h1>
+        <div className="partnercontainer">
+          <Link
+            href="https://www.brownalumnimagazine.com/articles/2024-03-15/are-the-kids-alright-molly-josephs-%E2%80%9909-this-teenage-life"
+            className="partner"
+          >
+            Brown Alumni Magazine
+          </Link>
+          <Link href="" className="partner">
+            American Academy of Pediatrics
+          </Link>
+
+          <Link
+            href="https://www.teenvogue.com/story/how-podcasting-helped-me-cope-with-pandemic-loneliness"
+            className="partner"
+          >
+            Teen Vogue on Teen Lonliness
+          </Link>
+          <Link
+            href="https://www.teenvogue.com/story/how-podcasting-helped-me-cope-with-pandemic-loneliness"
+            className="partner"
+          >
+            Teen Vogue on the Pandemic
+          </Link>
+          <Link
+            href="https://facingtoday.facinghistory.org/facing-reality-themselves"
+            className="partner"
+          >
+            Facing History and Ourselves
+          </Link>
+          <Link
+            href="https://www.edutopia.org/profile/molly-josephs/"
+            className="partner"
+          >
+            Edutopia
+          </Link>
+        </div>
+      </center>
+
+      {/* <h2 style={{ marginTop: "3rem" }}>
         Teen Team ✨<div className="tape-section"></div>
       </h2>
       <div className="full-team-img">
@@ -78,7 +169,7 @@ const page = () => {
           <div className="name">Carson</div>
           <div className="role">Social Media Manager</div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };

@@ -8,7 +8,7 @@ const Header = () => {
   const scrollDirection = useScrollDirection();
 
   return (
-    <div className={`header ${scrollDirection === "down" && "disappear"}`}>
+    <div className={`header ${scrollDirection === "down" && ""}`}>
       <div className="inside">
         <Link href={"/"}>
           <Image
@@ -22,17 +22,35 @@ const Header = () => {
         <ul>
           <li>
             <Link className="link" href="/episodes">
-              episodes
+              {/* Episodes */}
+              <Image
+                src="/navText/Episodes.png"
+                width={100}
+                height={100}
+                alt="Episodes"
+              />
             </Link>
           </li>
           <li>
             <Link className="link" href="/blog">
-              blog
+              {/* Blog */}
+              <Image
+                src="/navText/Blog.png"
+                width={100}
+                height={100}
+                alt="Blog"
+              />
             </Link>
           </li>
           <li>
             <Link className="link" href="/about">
-              about
+              {/* About */}
+              <Image
+                src="/navText/About.png"
+                width={100}
+                height={100}
+                alt="About"
+              />
             </Link>
           </li>
           {/* <li>

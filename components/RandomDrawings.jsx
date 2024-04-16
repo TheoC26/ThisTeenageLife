@@ -4,10 +4,14 @@ import Image from "next/image";
 
 function createDrawingsArray(numberOfDrawings) {
   let drawings = [];
+  let drawingsTop = [];
   for (let i = 0; i < numberOfDrawings; i++) {
     drawings.push("BG-Image-" + Math.floor(Math.random() * 10) + ".png");
+    drawingsTop.push(
+      i * (window.innerHeight / 3) + Math.random() * 150 - 80 + "px"
+    );
   }
-  return drawings;
+  return [drawings, drawingsTop];
 }
 
 function doesArrayHaveDuplicates(array) {
@@ -16,16 +20,19 @@ function doesArrayHaveDuplicates(array) {
 
 const RandomDrawings = () => {
   const [drawings, setDrawings] = useState([]);
+  const [drawingsTop, setDrawingsTop] = useState([]);
    const [height, setHeight] = useState("");
   useEffect(() => {
     const numberOfDrawings = Math.round(
       document.body.offsetHeight / (window.innerHeight / 2)
     );
-    let drawings = createDrawingsArray(numberOfDrawings);
-    while (doesArrayHaveDuplicates(drawings)) {
-        drawings = createDrawingsArray(numberOfDrawings);
+    let drawingsStuff = createDrawingsArray(numberOfDrawings);
+    while (doesArrayHaveDuplicates(drawingsStuff[0])) {
+      drawingsStuff = createDrawingsArray(numberOfDrawings);
     }
-    setDrawings(drawings);
+    console.log(drawingsStuff[1]);
+    setDrawings(drawingsStuff[0]);
+    setDrawingsTop(drawingsStuff[1]);
     if (typeof document !== "undefined") {
       const newHeight =
         document.body.offsetHeight > window.innerHeight
@@ -39,21 +46,24 @@ const RandomDrawings = () => {
     <div
       className="randomDrawings"
       style={{
-        height: height
+        height: height,
       }}
     >
       {drawings.map((drawing, i) => (
+        <>
+        {console.log(drawingsTop[i])}
         <Image
           key={i}
           className={`BG-Image ${i % 2 === 0 ? "left" : "right"}`}
           style={{
-            top: i * (window.innerHeight / 3) + Math.random() * 150 - 80 + "px",
+            top: drawingsTop[i],
           }}
           src={`/BG-Images/${drawing}`}
           alt="Random drawing"
           width={100}
           height={100}
         />
+        </>
       ))}
     </div>
   );

@@ -175,7 +175,11 @@ function FloatingLinkEditor({ editor }) {
   }, [isEditMode]);
 
   return (
-    <div ref={editorRef} className="link-editor" style={{top: "0px", left:"0px"}}>
+    <div
+      ref={editorRef}
+      className="link-editor"
+      style={{ top: "0px", left: "0px" }}
+    >
       {isEditMode ? (
         <input
           ref={inputRef}
@@ -264,7 +268,7 @@ function BlockOptionsDropdownList({
 
     if (toolbar !== null && dropDown !== null) {
       const { top, left } = toolbar.getBoundingClientRect();
-      console.log(top, left)
+      console.log(top, left);
       dropDown.style.top = `50px`;
       dropDown.style.left = `20px`;
     }
@@ -414,9 +418,8 @@ function BlockOptionsDropdownList({
   );
 }
 
-export default function ToolbarPlugin() {
+export default function ToolbarPlugin({ toolbarRef }) {
   const [editor] = useLexicalComposerContext();
-  const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
   const [blockType, setBlockType] = useState("paragraph");
@@ -476,6 +479,7 @@ export default function ToolbarPlugin() {
       }
     }
   }, [editor]);
+
 
   useEffect(() => {
     return mergeRegister(
@@ -580,15 +584,14 @@ export default function ToolbarPlugin() {
               />,
               document.body
             )} */}
-          {showBlockOptionsDropDown &&
-            
-              <BlockOptionsDropdownList
-                editor={editor}
-                blockType={blockType}
-                toolbarRef={toolbarRef}
-                setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
-              />
-            }
+          {showBlockOptionsDropDown && (
+            <BlockOptionsDropdownList
+              editor={editor}
+              blockType={blockType}
+              toolbarRef={toolbarRef}
+              setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
+            />
+          )}
           <Divider />
         </>
       )}
@@ -658,8 +661,7 @@ export default function ToolbarPlugin() {
           >
             <i className="format link" />
           </button>
-          {isLink &&
-            <FloatingLinkEditor editor={editor} />}
+          {isLink && <FloatingLinkEditor editor={editor} />}
           <Divider />
           <button
             onClick={() => {

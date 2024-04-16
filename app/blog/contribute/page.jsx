@@ -97,7 +97,7 @@ const contribute = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <div className="types-container">
+          <div className="types-container types-container-large">
             <input
               type="radio"
               id="types-1"

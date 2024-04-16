@@ -8,7 +8,8 @@ import React from "react";
 import BlogImage from "@/components/BlogImage";
 import TapeRow from "@/components/TapeRow";
 import TapedPaper from "@/components/TapedPaper";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import useStateRef from "../../hooks/stateRef";
 import { db } from "../../firebase.js";
 import {
   doc,
@@ -20,13 +21,21 @@ import {
   where,
 } from "firebase/firestore";
 import Link from "next/link.js";
+import Image from "next/image.js";
+import RandomDrawings from "@/components/RandomDrawings";
+import SearchedPosts from "@/components/SearchedPosts";
+import BlogSearchBar from "@/components/BlogSearchBar";
 
 const blog = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [searchedPosts, setSearchedPosts, searchedPostsRef] = useStateRef([]);
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+
+  const snailRef = useRef(null);
+  const wannaContributeRef = useRef(null);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -52,7 +61,32 @@ const blog = () => {
       }
     };
     getPosts();
+
+    const snail = snailRef.current;
+    const wannaContribute = wannaContributeRef.current;
+    // make the snail stay at the bottom left but move and rotate towards the mouse
+    document.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      snail.style.left = 20 + Math.sqrt(x) + "px";
+      snail.style.bottom = 50 - Math.sqrt(y) + "px";
+
+      if (x < 300 && y > window.innerHeight - 150) {
+        wannaContribute.style.display = "unset";
+      } else {
+        wannaContribute.style.display = "none";
+      }
+    });
   }, []);
+
+  let timer;
+  useEffect(() => {
+    // debounce of 500ms
+    const timeout = setTimeout(() => {
+      searchPosts();
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, [search]);
 
   function convertDateToFormattedDate(date) {
     const unixTimestamp = date.seconds;
@@ -69,7 +103,7 @@ const blog = () => {
   }
 
   async function searchPosts(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     try {
       console.log("searching...");
       const collectionRef = collection(db, "/posts");
@@ -92,7 +126,8 @@ const blog = () => {
             })
           );
         });
-        console.log(tempArr);
+        console.log("changing posts");
+        setSearchedPosts(tempArr);
         // setPosts(tempArr);
       } else {
         // No search, default query
@@ -108,7 +143,8 @@ const blog = () => {
           );
         });
         console.log(tempArr);
-        // setPosts(tempArr);
+
+        setSearchedPosts(tempArr);
       }
     } catch (err) {
       setError("Failed to load sources");
@@ -120,18 +156,46 @@ const blog = () => {
 
   return (
     <main className="blogPage">
+      <RandomDrawings />
+      <Link href="/blog/contribute">
+        <div className="contribute-snail" ref={snailRef}>
+          <Image
+            class="snail"
+            src="/decoratives/snail.png"
+            width={100}
+            height={100}
+          />
+          <Image
+            class="wanna-contribute"
+            ref={wannaContributeRef}
+            src="/decoratives/wannaContribute.png"
+            width={100}
+            height={100}
+          />
+        </div>
+      </Link>
       <div className="heading">
         <div className="tape-section"></div>
         TTL Blog: For Teens by Teens
-        </div>
+      </div>
       <Polaroids featured={posts.filter((post) => post.featured == true)} />
-      <SearchBar
+      <BlogSearchBar
         type="episode"
         search={search}
         setSearch={setSearch}
         submit={searchPosts}
         setIsSearching={setIsSearching}
+        posts={searchedPosts.length > 0 && searchedPosts}
+        showSearches={search.length > 0}
+        isSearching={isSearching}
       />
+      <div style={{ height: "20px" }}></div>
+      {/* {isSearching && (
+        <SearchedPosts
+          posts={searchedPosts.length > 0 && searchedPosts}
+          showSearches={search.length > 0}
+        />
+      )} */}
       {/* <div className="heading">Recents</div> */}
       <div className="big-left">
         <div>
@@ -187,8 +251,6 @@ const blog = () => {
               />
             )
         )}
-
-      <Link href="/blog/contribute">Wanna contribute to the blog?</Link>
 
       {/* <BlogRow
         title={"My Life Through The Seasons"}

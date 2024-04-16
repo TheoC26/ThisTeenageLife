@@ -24,7 +24,8 @@ import ListMaxIndentLevelPlugin from "./editor-plugins/ListMaxIndentLevelPlugin"
 import CodeHighlightPlugin from "./editor-plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./editor-plugins/AutoLinkPlugin";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 const exampleTheme = {
   ltr: "ltr",
@@ -124,7 +125,29 @@ const editorConfig = {
   ],
 };
 
-export default function Editor({setContent}) {
+export default function Editor({ setContent }) {
+  const [XScroll, setXScroll] = useState(0);
+  const toolbarRef = useRef(null);
+  const rightArrowRef = useRef(null);
+  const leftArrowRef = useRef(null);
+
+  useEffect(() => {
+    toolbarRef.current.addEventListener("scroll", (e) => {
+      setXScroll(e.target.scrollLeft);
+      console.log(e.target.scrollLeft);
+    });
+    console.log(leftArrowRef);
+    if (rightArrowRef.current != null) {
+      rightArrowRef.current.addEventListener("click", () => {
+        toolbarRef.current.scrollLeft = 110;
+      });
+    }
+    if (leftArrowRef.current != null) {
+      leftArrowRef.current.addEventListener("click", () => {
+        toolbarRef.current.scrollLeft = 0;
+      });
+    }
+  }, [toolbarRef, leftArrowRef.current, rightArrowRef.current]);
 
   return (
     <LexicalComposer
@@ -153,14 +176,10 @@ export default function Editor({setContent}) {
       }}
     >
       <div className="editor-container">
-        <ToolbarPlugin />
+        <ToolbarPlugin toolbarRef={toolbarRef} />
         <div className="editor-inner">
           <RichTextPlugin
-            contentEditable={
-              <ContentEditable
-                className="editor-input"
-              />
-            }
+            contentEditable={<ContentEditable className="editor-input" />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
@@ -176,6 +195,27 @@ export default function Editor({setContent}) {
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         </div>
+        {XScroll < 30 ? (
+          <div className="floating-gradient right" ref={rightArrowRef}>
+            <Image
+              src={"/icons/arrow.svg"}
+              width={30}
+              height={30}
+              alt="arrow"
+            />
+          </div>
+        ) : (
+          XScroll > 70 && (
+            <div className="floating-gradient left" ref={leftArrowRef}>
+              <Image
+                src={"/icons/arrow.svg"}
+                width={30}
+                height={30}
+                alt="arrow"
+              />
+            </div>
+          )
+        )}
       </div>
     </LexicalComposer>
   );

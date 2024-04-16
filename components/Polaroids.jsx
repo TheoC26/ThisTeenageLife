@@ -46,7 +46,8 @@ const Polaroids = (featured) => {
             slug={article.id}
             imagePath={"/BG-Images/BG-Image-2.png"}
           />
-          <Polaroid
+          
+          {/* <Polaroid
             title={drawing.title}
             type={"drawing"}
             name={drawing.author}
@@ -69,7 +70,7 @@ const Polaroids = (featured) => {
             date={episode.formattedDate}
             slug={episode.id}
             imagePath={"/BG-Images/BG-Image-5.png"}
-          />
+          /> */}
         </>
       )}
     </div>

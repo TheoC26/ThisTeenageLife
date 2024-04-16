@@ -2,7 +2,11 @@ import React from "react";
 
 const SearchBar = ({ type, search, setSearch, submit, setIsSearching }) => {
   return (
-    <form className="searchbar" onSubmit={submit}>
+    <form
+      className={type == "episode" ? "episodessearchbar" : "searchbar"}
+      onSubmit={submit}
+    >
+      {console.log(type == "episode")}
       <div className="search">
         <input
           type="text"
@@ -10,8 +14,11 @@ const SearchBar = ({ type, search, setSearch, submit, setIsSearching }) => {
           className="searchinput"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          // onFocus={() => setIsSearching(true)}
-          // onBlur={() => {setTimeout(() => setIsSearching(false), 150); console.log("clicked 2")} } 
+          onFocus={() => setIsSearching(true)}
+          onBlur={() => {
+            setTimeout(() => setIsSearching(false), 150);
+            console.log("clicked 2");
+          }}
         />
         <input type="submit" value="search" className="submit" />
       </div>

@@ -6,7 +6,8 @@ const nextConfig = {
       "ssl-static.libsyn.com",
       "static.libsyn.com",
     ],
+    unoptimized: true,
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
