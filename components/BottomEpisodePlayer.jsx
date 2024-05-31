@@ -4,14 +4,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
 
 const BottomEpisodePlayer = () => {
-  const { episodes, setEpisodeNumber, episode, play, setPlay, duration, durationRef, setDuration, currentTime, setCurrentTime, autoPlay, setAutoPlay } =
+  const { episodes, setEpisodeNumber, episode, play, setPlay, duration, durationRef, setDuration, currentTime, setCurrentTime, autoPlay, setAutoPlay, isShowing } =
     useEpisodesv2();
 
   const playAnimationRef = useRef(null);
   const sliderRef = useRef(null);
   const audioRef = useRef(null);
 
-  const [isShowing, setIsShowing] = useState(false);
+  // const [isShowing, setIsShowing] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
   useEffect(() => {
     setScreenWidth(window.innerWidth);
@@ -72,7 +72,7 @@ const BottomEpisodePlayer = () => {
   }
 
   return (
-    <div style={!autoPlay && { display: "none" }}>
+    <div style={!isShowing && { display: "none" }}>
       <audio
         src={episode && episode.enclosure.url}
         ref={audioRef}

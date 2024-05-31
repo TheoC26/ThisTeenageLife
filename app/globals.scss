@@ -183,7 +183,7 @@ main {
       }
       &:nth-child(3) {
         img {
-          height: 30px;
+          height: 32px;
           // background-color: white;
         }
       }
@@ -327,8 +327,9 @@ main {
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
-  position: absolute;
-  padding-inline: 8rem;
+  position: block;
+  // z-index: -10;
+  // padding-inline: 8rem;
   top: 41rem;
 
   .search {
@@ -2235,7 +2236,7 @@ main {
 .episodesPage {
   margin: 0 2rem;
   width: auto;
-  height: 85vh;
+  height: auto;
   background-color: white;
   border-radius: 30px;
   padding: 2rem;
@@ -2343,12 +2344,14 @@ main {
   .episodes-container {
     display: flex;
     .ipod-player {
-      width: 16rem;
+      // width: 16rem;
+      position: sticky;
+      top: 5rem;
       height: 24rem;
       aspect-ratio: 1/1.5;
       border-radius: 45px;
       background-color: var(--background-color);
-      position: relative;
+      // position: relative;
       padding: 1.3rem;
       padding-top: 1.5rem;
 
@@ -2395,7 +2398,7 @@ main {
       }
     }
     .episodes-list {
-      height: 65vh;
+      // height: 65vh;
       border-radius: 30px;
       overflow-y: scroll;
       display: flex;
@@ -2461,8 +2464,8 @@ body {
   }
 
   .editor-input {
-    height: 30rem;
-    min-height: 150px;
+    // height: 30rem;
+    min-height: 30rem;
     resize: none;
     font-size: 15px;
     caret-color: rgb(5, 5, 5);
@@ -3153,6 +3156,7 @@ body {
 
 /* For laptops and tablets */
 @media (max-width: 1199px) {
+  // MARK: Hello
   main {
     margin-inline: 3rem;
   }
@@ -3375,7 +3379,7 @@ body {
   .episodesPage {
     margin: 0 2rem;
     width: auto;
-    height: 85vh;
+    height: auto;
     background-color: white;
     border-radius: 30px;
     padding: 2rem;
@@ -3525,7 +3529,6 @@ body {
         }
       }
       .episodes-list {
-        height: 65vh;
         border-radius: 15px;
         overflow-y: scroll;
         display: flex;
@@ -3654,6 +3657,26 @@ body {
   .homePageV3 {
     // current version
     display: none;
+  }
+  .teamSection {
+    .computer {
+      margin-inline: 0rem;
+    }
+  }
+  .featuredBlogEpisodes {
+    padding-inline: 3vw;
+
+    // the first .ipod
+    .ipod {
+      &.ipod-3 {
+        transform: translateY(150px);
+      }
+    }
+    .blog {
+      .polaroid {
+        transform: scale(0.9) translateY(20px);
+      }
+    }
   }
 }
 
@@ -3797,9 +3820,9 @@ body {
     }
   }
   .episodesPage {
-    margin: 0 2rem;
+    margin: 2rem 0.5rem;
     width: auto;
-    height: 85vh;
+    // height: 85vh;
     background-color: white;
     border-radius: 30px;
     padding: 1rem;
@@ -4267,6 +4290,80 @@ body {
       transform: translateX(263%) translateY(130%);
     }
   }
+  .featuredBlogEpisodes {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: -3rem;
+    width: 100%;
+    padding: 0;
+    margin-inline: 0;
+    padding-inline: 0;
+    height: 100rem;
+
+    .featured-letters {
+      position: absolute;
+      width: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 25rem;
+      display: flex;
+      // gap: 1.2rem;
+      display: none;
+    }
+    .featured-letter {
+      height: 90px;
+      width: auto;
+      // position: absolute;
+      top: 0;
+      left: 0;
+
+      &:nth-of-type(1) {
+        transform: translateY(25px) rotate(5deg);
+      }
+      &:nth-of-type(2) {
+        transform: translateY(15px) rotate(0deg);
+      }
+      &:nth-of-type(3) {
+        transform: translateY(-20px) rotate(-10deg);
+      }
+      &:nth-of-type(4) {
+        transform: translateY(-35px) rotate(0deg);
+      }
+      &:nth-of-type(5) {
+        transform: translateY(-40px) rotate(0deg);
+      }
+      &:nth-of-type(6) {
+        transform: translateY(-30px) rotate(10deg);
+      }
+      &:nth-of-type(7) {
+        transform: translateY(10px) rotate(0deg);
+      }
+      &:nth-of-type(8) {
+        transform: translateY(15px) rotate(-5deg);
+      }
+    }
+
+    // the first .ipod
+    .ipod {
+      transform: scale(1);
+      grid-row: span 1;
+
+      &.ipod-3 {
+        transform: scale(1) translateY(0px);
+      }
+    }
+    .blog {
+      grid-row: span 1;
+      .polaroid {
+        transform: scale(0.9) translateY(0px);
+      }
+      &.blog-2,
+      &.blog-3 {
+        transform: translateY(0px);
+      }
+    }
+  }
 }
 
 /* For mobile phones in portrait mode */
@@ -4479,9 +4576,9 @@ body {
     }
   }
   .episodesPage {
-    margin: 0 2rem;
+    margin: 0 0.5rem;
     width: auto;
-    height: 85vh;
+    height: auto;
     background-color: white;
     border-radius: 20px;
     padding: 1rem;
@@ -4588,7 +4685,7 @@ body {
     .episodes-container {
       display: flex;
       .episodes-list {
-        height: 65vh;
+        height: auto;
         border-radius: 15px;
         overflow-y: scroll;
         display: flex;
@@ -4708,6 +4805,37 @@ body {
     }
     input[id="types-6"]:checked ~ .glider {
       transform: translateX(145%) translateY(230%);
+    }
+  }
+  .featuredBlogEpisodes {
+    display: none;
+    grid-template-columns: 1fr;
+    grid-gap: -3rem;
+    width: 100%;
+    padding: 0;
+    margin-inline: 0;
+    padding-inline: 2rem;
+    // height: 100rem;
+
+
+    // the first .ipod
+    .ipod {
+      transform: scale(1);
+      grid-row: span 1;
+
+      &.ipod-3 {
+        // transform: scale(1) translateY(0px);
+      }
+    }
+    .blog {
+      grid-row: span 1;
+      .polaroid {
+        transform: scale(0.7) translateY(0px);
+      }
+      &.blog-2,
+      &.blog-3 {
+        transform: translateY(0px);
+      }
     }
   }
 }

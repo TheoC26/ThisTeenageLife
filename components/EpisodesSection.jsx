@@ -21,6 +21,10 @@ const EpisodesSection = () => {
     console.log(isSearching);
   }, [isSearching]);
 
+  useEffect(() => {
+    console.log(episodes)
+  }, [episodes])
+
   return (
     <div>
       <Image src="/navText/Episodes.png" width={300} height={100} />

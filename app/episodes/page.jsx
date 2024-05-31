@@ -21,6 +21,10 @@ const episodes = () => {
     console.log(isSearching);
   }, [isSearching]);
 
+  useEffect(() => {
+    console.log(episodes)
+  }, [episodes])
+
   return (
     <div className="episodesPage">
       <div className="top">

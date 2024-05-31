@@ -1,25 +1,23 @@
 "use client";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import useStateRef from "@/hooks/stateRef";
-import Parser from "rss-parser";
 
 const Episodesv2Context = React.createContext();
-const RSS_URL = `https://feeds.libsyn.com/169844/rss/`;
-// const RSS_URL = `/rss.xml`; // for offline testing
 
 export function useEpisodesv2() {
   return useContext(Episodesv2Context);
 }
+
 export function Episodesv2Provider({ children }) {
   const playAnimationRef = useRef(null);
-  // const audioRef = useRef(null);
   const [episodes, setEpisodes] = useState([]);
-  const [episodeNumber, setEpisodeNumber] = useState(-1);
+  const [episodeNumber, setEpisodeNumber] = useState(0);
   const [episode, setEpisode] = useState(null);
   const [play, setPlay] = useState(false);
   const [autoPlay, setAutoPlay, autoPlayRef] = useStateRef(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration, durationRef] = useStateRef(0);
+  const [isShowing, setIsShowing, isShowingRef] = useStateRef(false);
 
   const repeat = () => {
     playAnimationRef.current = requestAnimationFrame(repeat);
@@ -28,41 +26,59 @@ export function Episodesv2Provider({ children }) {
 
   useEffect(() => {
     const fetchRSS = async () => {
-      const parser = new Parser();
-      const feed = await parser.parseURL(RSS_URL);
-      setEpisodes(feed.items);
+      try {
+        const response = await fetch("/api/fetchRSS");
+        if (!response.ok) {
+          throw new Error("Failed to fetch RSS feed");
+        }
+        const data = await response.json();
+        setEpisodes(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchRSS();
   }, []);
+
+  // useEffect(() => {
+  //   let tempPlay = false;
+  //   setEpisode(episodes[episodeNumber]);
+  //   if (episodeNumber != -1) {
+  //     setAutoPlay(true);
+  //     tempPlay = true;
+  //   }
+  //   if (autoPlayRef.current || tempPlay) {
+  //     setPlay(false);
+  //     setTimeout(() => setPlay(true), 100);
+  //     setCurrentTime(0);
+  //   } else {
+  //     setPlay(false);
+  //     setCurrentTime(0);
+  //   }
+  // }, [episodeNumber]);
   useEffect(() => {
-    let tempPlay = false;
+    //  let tempPlay = false;
     setEpisode(episodes[episodeNumber]);
-    if (episodeNumber != -1) {
-      setAutoPlay(true);
-      tempPlay = true;
-    }
-    if (autoPlayRef.current || tempPlay) {
+    //  if (episodeNumber != -1) {
+    //    setAutoPlay(true);
+    //    tempPlay = true;
+    //  }
+    if (autoPlayRef.current) {
+      setIsShowing(true);
       setPlay(false);
       setTimeout(() => setPlay(true), 100);
       setCurrentTime(0);
     } else {
+      setAutoPlay(true);
       setPlay(false);
       setCurrentTime(0);
     }
   }, [episodeNumber]);
 
-  // useEffect(() => {
-  //   if (play) {
-  //     playAnimationRef.current = requestAnimationFrame(repeat);
-  //   } else {
-  //     // audioRef.current.pause();
-  //     cancelAnimationFrame(playAnimationRef.current);
-  //   }
-  // }, [play]);
-
   function onLoadedData() {
     setDuration(audioRef.current.duration);
   }
+
   const value = {
     episodes,
     setEpisodeNumber,
@@ -77,7 +93,9 @@ export function Episodesv2Provider({ children }) {
     setCurrentTime,
     autoPlay,
     setAutoPlay,
+    isShowing,
   };
+
   return (
     <Episodesv2Context.Provider value={value}>
       {children}
