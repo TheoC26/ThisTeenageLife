@@ -66,6 +66,139 @@ export default function Home() {
       },
     });
 
+    // emptyMouthTimeline
+    //   .to(microphoneRef.current, {
+    //     duration: 1, // Doubled duration again
+    //     top: -500,
+    //     delay: 0.0, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .to(textRef.current, {
+    //     duration: 0.9, // Doubled duration again
+    //     top: -500,
+    //     delay: -0.75, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .to(emptyMouthRef.current, {
+    //     duration: 0.75, // Doubled duration again
+    //     top: -500,
+    //     delay: -0.75, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .fromTo(
+    //     quoteRef.current,
+    //     {
+    //       bottom: -400,
+    //       rotate: 0,
+    //       scale: 1,
+    //     },
+    //     {
+    //       delay: -1, // Doubled delay again
+    //       duration: 3, // Doubled duration again
+    //       ease: "linear",
+    //       top: -500,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .fromTo(
+    //     testimonialRefs[0].current,
+    //     {
+    //       bottom: -400,
+    //       left: 10,
+    //       ease: "linear",
+    //       scale: 0.8,
+    //       rotate: 3,
+    //     },
+    //     {
+    //       delay: -3,
+    //       duration: 2,
+    //       ease: "linear",
+    //       top: -700,
+    //       rotate: -3,
+    //       left: 15,
+    //     }
+    //   )
+    //   .fromTo(
+    //     testimonialRefs[1].current,
+    //     {
+    //       bottom: -400,
+    //       right: 10,
+    //       ease: "linear",
+    //       scale: 1,
+    //     },
+    //     {
+    //       delay: -2.5,
+    //       duration: 1.5,
+    //       ease: "linear",
+    //       top: -500,
+    //     }
+    //   )
+    //   .fromTo(
+    //     testimonialRefs[2].current,
+    //     {
+    //       bottom: -400,
+    //       left: 0,
+    //       ease: "linear",
+    //       scale: 1.1,
+    //     },
+    //     {
+    //       delay: -1.4,
+    //       duration: 1.2,
+    //       ease: "linear",
+    //       top: -500,
+    //     }
+    //   )
+    //   .fromTo(
+    //     testimonialRefs[3].current,
+    //     {
+    //       bottom: -400,
+    //       right: 10,
+    //       ease: "linear",
+    //       scale: 0.9,
+    //       rotate: -3,
+    //     },
+    //     {
+    //       delay: -1.6,
+    //       duration: 1.8,
+    //       ease: "linear",
+    //       top: -700,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .fromTo(
+    //     floatingDecorativeRefs[0].current,
+    //     {
+    //       bottom: -1300,
+    //       left: -100,
+    //       ease: "linear",
+    //       scale: 1,
+    //       rotate: 10,
+    //     },
+    //     {
+    //       delay: -2.5,
+    //       duration: 3,
+    //       ease: "linear",
+    //       top: -3000,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .fromTo(
+    //     floatingDecorativeRefs[1].current,
+    //     {
+    //       bottom: -1300,
+    //       left: 1000,
+    //       ease: "linear",
+    //       scale: 1,
+    //       rotate: -10,
+    //     },
+    //     {
+    //       delay: -4,
+    //       duration: 3,
+    //       ease: "linear",
+    //       top: -3000,
+    //       rotate: 0,
+    //     }
+    //   );
     emptyMouthTimeline
       .to(microphoneRef.current, {
         duration: 1, // Doubled duration again
@@ -85,32 +218,20 @@ export default function Home() {
         delay: -0.75, // Doubled delay again
         ease: "power1.inOut",
       })
-      .fromTo(
+      .to(
         quoteRef.current,
         {
-          bottom: -400,
-          rotate: 0,
-          scale: 1,
-        },
-        {
-          delay: -1, // Doubled delay again
+          delay: -.5, // Doubled delay again
           duration: 3, // Doubled duration again
           ease: "linear",
           top: -500,
           rotate: 0,
         }
       )
-      .fromTo(
+      .to(
         testimonialRefs[0].current,
         {
-          bottom: -400,
-          left: 10,
-          ease: "linear",
-          scale: 0.8,
-          rotate: 3,
-        },
-        {
-          delay: -3,
+          delay: -3.5,
           duration: 2,
           ease: "linear",
           top: -700,
@@ -118,81 +239,48 @@ export default function Home() {
           left: 15,
         }
       )
-      .fromTo(
+      .to(
         testimonialRefs[1].current,
         {
-          bottom: -400,
-          right: 10,
-          ease: "linear",
-          scale: 1,
-        },
-        {
-          delay: -2.5,
+          delay: -3,
           duration: 1.5,
           ease: "linear",
           top: -500,
         }
       )
-      .fromTo(
+      .to(
         testimonialRefs[2].current,
         {
-          bottom: -400,
-          left: 0,
-          ease: "linear",
-          scale: 1.1,
-        },
-        {
-          delay: -1.4,
-          duration: 1.2,
+          delay: -2.5,
+          duration: 1.3,
           ease: "linear",
           top: -500,
         }
       )
-      .fromTo(
+      .to(
         testimonialRefs[3].current,
         {
-          bottom: -400,
-          right: 10,
-          ease: "linear",
-          scale: 0.9,
-          rotate: -3,
-        },
-        {
-          delay: -1.6,
+          delay: -2.3,
           duration: 1.8,
           ease: "linear",
           top: -700,
           rotate: 0,
         }
       )
-      .fromTo(
+      .to(
         floatingDecorativeRefs[0].current,
         {
-          bottom: -1300,
-          left: -100,
-          ease: "linear",
-          scale: 1,
-          rotate: 10,
-        },
-        {
-          delay: -2.5,
-          duration: 3,
+          delay: -4,
+          duration: 3.2,
           ease: "linear",
           top: -3000,
           rotate: 0,
         }
       )
-      .fromTo(
+      .to(
         floatingDecorativeRefs[1].current,
         {
-          bottom: -1300,
-          left: 1000,
-          ease: "linear",
-          scale: 1,
-          rotate: -10,
-        },
-        {
-          delay: -4,
+          delay: -3.2,
           duration: 3,
           ease: "linear",
           top: -3000,
@@ -211,6 +299,18 @@ export default function Home() {
             width={1000}
             height={1000}
           />
+        </div>
+        <div className="quote">
+          <span style={{ fontSize: "2.5rem" }}>This Teenage Life -</span>
+          <br />{" "}
+          <span style={{ fontSize: "1.75rem" }}>
+            a global youth dialogue and podcasting program
+          </span>{" "}
+          <br />
+          <br />
+          With approximately 50 teen participant and hundreds of thousands of
+          listeners, we help teens throughout the world develop communication
+          skills, authentic community, and a sense of purpose.
         </div>
       </div>
       {/* --- DESKTOP ---  */}
@@ -274,7 +374,7 @@ export default function Home() {
             <Polaroid
               title={"Teen Vogue"}
               type={"featured on"}
-              imagePath={"/BG-Images/BG-Image-0.png"}
+              imagePath={"/featuredOn/teenVogue.jpeg"}
             />
           </div>
           <div className="testimonial testimonial-1" ref={testimonialRefs[1]}>
@@ -324,7 +424,10 @@ export default function Home() {
               imagePath={"/BG-Images/BG-Image-2.png"}
             />
           </div>
-          <div className="decorative" ref={floatingDecorativeRefs[0]}>
+          <div
+            className="decorative decorative-1"
+            ref={floatingDecorativeRefs[0]}
+          >
             <Image
               src={"/decoratives/headphones1.png"}
               alt="headphones"
@@ -332,7 +435,10 @@ export default function Home() {
               height={1000}
             />
           </div>
-          <div className="decorative" ref={floatingDecorativeRefs[1]}>
+          <div
+            className="decorative decorative-2"
+            ref={floatingDecorativeRefs[1]}
+          >
             <Image
               src={"/decoratives/headphones2.png"}
               alt="headphones"

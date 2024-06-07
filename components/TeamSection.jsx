@@ -1,26 +1,62 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, {useState} from "react";
 
 // a project for teenagers, by teenagers, about #this teenage life#
 
 const TeamSection = () => {
-  // create a list of 30 random names
+
+  const [page, setPage] = useState(0);
+
   const teamMembers = [
     "Molly J",
-    "Cloe",
+
     "Evelyn",
-    "Molly Z",
-    "Saniya",
-    "Divya",
-    "Lola",
-    "Gamu",
-    "Alexis",
-    "Caylin",
-    "Eva",
     "Jayden",
     "Lydia",
     "Stella",
+    "Alexis",
+    "Divya",
+    "Kashika",
+    "Maith",
+    "Eva",
+    "Cay",
+
+    "Saniya R",
+    "Saniya Z",
+
+    "Lola",
+    "Gamu",
+
+    "Haven",
+
+    "Kara",
+    "Ummul",
+    "Matu",
+    "Medha",
+
+    "Brin",
+    "Bethany",
+    "Gargi",
+    "Jacqui",
+    "Harini",
+
+    
+    "Molly Z",
+    "Cloe",
+    "Olivia",
+    "Cami",
+    "Taylor",
+    "Jade",
+    "Shreena",
+    "Arshita",
+    "Krithiga",
+    "Bhargabi",
+    "Aanya",
+    "Yashasvi",
+    "Sophia",
+    "Sailor",
+    "Shreyaan"
   ];
 
   return (
@@ -39,11 +75,15 @@ const TeamSection = () => {
           <div className="peopleGrid">
             {teamMembers.map(
               (name, i) =>
-                i < 16 && (
+                page * 16 -1 < i &&
+                i < page * 16 + 16 && (
                   <div className="person" key={i}>
+                    {console.log(i)}
                     <Image
                       priority={true}
-                      src={`/teamPhotos/${name.replace(" ", "").toLocaleLowerCase()}.jpeg`}
+                      src={`/teamPhotos/${name
+                        .replace(" ", "")
+                        .toLocaleLowerCase()}.jpeg`}
                       alt="person"
                       width={100}
                       height={100}
@@ -60,6 +100,8 @@ const TeamSection = () => {
           width={1000}
           height={1000}
         />
+      <div className="next back" onClick={() => page >=1 && setPage(page-1)}>Back</div>
+      <div className="next" onClick={() => page <=2 && setPage(page+1)}>Next</div>
       </div>
     </div>
   );
