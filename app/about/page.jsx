@@ -9,8 +9,19 @@ const page = () => {
       {/* <RandomDrawings /> */}
       {/* <TopMediaPlayer item={episodes[0]} autoPlay={false} page={"home"} /> */}
 
-      <h2>
+      <h2
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          fontSize: "1.2rem",
+          color: "black",
+        }}
+      >
         <Image src="/navText/aboutus.png" width={300} height={50} />
+        <div style={{ backgroundColor: "white", padding: ".3rem", borderRadius: "5px", marginTop: ".7rem"}}>
+          *and our <b>awesome</b> website*
+        </div>
       </h2>
       <center>
         <div className="video">
@@ -33,8 +44,7 @@ const page = () => {
           It can be easy to think "I'm the only one with this issue," but
           hearing other young people share their experiences can normalize
           conversations around sensitive subjects and make the world feel less
-          lonely, less big, and a little more loving.
-          <br /> - Cloe Moreno
+          lonely, less big, and a little more loving. - Cloe Moreno
         </div>
       </center>
 

@@ -58,7 +58,7 @@ export default function Home() {
     let emptyMouthTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".marker",
-        start: "0 80px",
+        start: "0px 0px",
         end: "4000px top",
         scrub: 1.5,
         pin: true,
@@ -199,6 +199,97 @@ export default function Home() {
     //       rotate: 0,
     //     }
     //   );
+
+    // emptyMouthTimeline
+    //   .to(microphoneRef.current, {
+    //     duration: 1, // Doubled duration again
+    //     top: -500,
+    //     delay: 0.0, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .to(textRef.current, {
+    //     duration: 0.9, // Doubled duration again
+    //     top: -500,
+    //     delay: -0.75, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .to(emptyMouthRef.current, {
+    //     duration: 0.75, // Doubled duration again
+    //     top: -500,
+    //     delay: -0.75, // Doubled delay again
+    //     ease: "power1.inOut",
+    //   })
+    //   .to(
+    //     quoteRef.current,
+    //     {
+    //       delay: -.75, // Doubled delay again
+    //       duration: 2.2, // Doubled duration again
+    //       ease: "linear",
+    //       top: -500,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .to(
+    //     testimonialRefs[0].current,
+    //     {
+    //       delay: -1.9,
+    //       duration: 2.2,
+    //       ease: "linear",
+    //       top: -700,
+    //       rotate: -3,
+    //       left: 15,
+    //     }
+    //   )
+    //   .to(
+    //     testimonialRefs[1].current,
+    //     {
+    //       delay: -2.8,
+    //       duration: 1.5,
+    //       rotate: 2,
+    //       ease: "linear",
+    //       top: -500,
+    //     }
+    //   )
+    //   .to(
+    //     testimonialRefs[2].current,
+    //     {
+    //       delay: -2.3,
+    //       duration: 1.3,
+    //       ease: "linear",
+    //       top: -500,
+    //     }
+    //   )
+    //   .to(
+    //     testimonialRefs[3].current,
+    //     {
+    //       delay: -2.7,
+    //       duration: 1.8,
+    //       ease: "linear",
+    //       top: -700,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .to(
+    //     floatingDecorativeRefs[0].current,
+    //     {
+    //       delay: -3,
+    //       duration: 3.2,
+    //       ease: "linear",
+    //       top: -3000,
+    //       rotate: 0,
+    //     }
+    //   )
+    //   .to(
+    //     floatingDecorativeRefs[1].current,
+    //     {
+    //       delay: -3.2,
+    //       duration: 3,
+    //       ease: "linear",
+    //       top: -3000,
+    //       rotate: 0,
+    //     }
+    //   );
+
     emptyMouthTimeline
       .to(microphoneRef.current, {
         duration: 1, // Doubled duration again
@@ -220,8 +311,9 @@ export default function Home() {
       })
       .to(
         quoteRef.current,
+        
         {
-          delay: -.5, // Doubled delay again
+          delay: -1, // Doubled delay again
           duration: 3, // Doubled duration again
           ease: "linear",
           top: -500,
@@ -231,7 +323,7 @@ export default function Home() {
       .to(
         testimonialRefs[0].current,
         {
-          delay: -3.5,
+          delay: -2.8,
           duration: 2,
           ease: "linear",
           top: -700,
@@ -242,25 +334,28 @@ export default function Home() {
       .to(
         testimonialRefs[1].current,
         {
-          delay: -3,
+          delay: -2.8,
           duration: 1.5,
           ease: "linear",
           top: -500,
+          rotate: 3,
         }
       )
       .to(
         testimonialRefs[2].current,
         {
-          delay: -2.5,
-          duration: 1.3,
+          delay: -1.7,
+          duration: 1.2,
           ease: "linear",
           top: -500,
+          rotate: 0,
         }
       )
       .to(
         testimonialRefs[3].current,
+        
         {
-          delay: -2.3,
+          delay: -1.9,
           duration: 1.8,
           ease: "linear",
           top: -700,
@@ -269,9 +364,10 @@ export default function Home() {
       )
       .to(
         floatingDecorativeRefs[0].current,
+        
         {
-          delay: -4,
-          duration: 3.2,
+          delay: -2.5,
+          duration: 3,
           ease: "linear",
           top: -3000,
           rotate: 0,
@@ -279,8 +375,9 @@ export default function Home() {
       )
       .to(
         floatingDecorativeRefs[1].current,
+        
         {
-          delay: -3.2,
+          delay: -3,
           duration: 3,
           ease: "linear",
           top: -3000,
@@ -419,9 +516,9 @@ export default function Home() {
               eos.
             </div> */}
             <Polaroid
-              title={"Facing History"}
+              title={"Brown Alumni Magazine"}
               type={"featured on"}
-              imagePath={"/BG-Images/BG-Image-2.png"}
+              imagePath={"/featuredOn/brownAlumni.jpeg"}
             />
           </div>
           <div
