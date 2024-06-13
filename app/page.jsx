@@ -7,6 +7,7 @@ import EpisodesSection from "@/components/EpisodesSection";
 import TeamSection from "@/components/TeamSection";
 import Polaroid from "@/components/Polaroid";
 import FeaturedBlogEpisodes from "@/components/FeaturedBlogEpisodes";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 // TODO: make the first thing that comes up the ipod player of newest episode
@@ -311,60 +312,51 @@ export default function Home() {
       })
       .to(
         quoteRef.current,
-        
+
         {
           delay: -1, // Doubled delay again
-          duration: 3, // Doubled duration again
+          duration: 2.7, // Doubled duration again
           ease: "linear",
           top: -500,
           rotate: 0,
         }
       )
-      .to(
-        testimonialRefs[0].current,
-        {
-          delay: -2.8,
-          duration: 2,
-          ease: "linear",
-          top: -700,
-          rotate: -3,
-          left: 15,
-        }
-      )
-      .to(
-        testimonialRefs[1].current,
-        {
-          delay: -2.8,
-          duration: 1.5,
-          ease: "linear",
-          top: -500,
-          rotate: 3,
-        }
-      )
-      .to(
-        testimonialRefs[2].current,
-        {
-          delay: -1.7,
-          duration: 1.2,
-          ease: "linear",
-          top: -500,
-          rotate: 0,
-        }
-      )
+      .to(testimonialRefs[0].current, {
+        delay: -2.6,
+        duration: 2,
+        ease: "linear",
+        top: -700,
+        rotate: -3,
+        left: 15,
+      })
+      .to(testimonialRefs[1].current, {
+        delay: -2.4,
+        duration: 1.5,
+        ease: "linear",
+        top: -500,
+        rotate: 3,
+      })
+      .to(testimonialRefs[2].current, {
+        delay: -1.3,
+        duration: 1.2,
+        ease: "linear",
+        top: -500,
+        rotate: -4,
+      })
       .to(
         testimonialRefs[3].current,
-        
+
         {
           delay: -1.9,
           duration: 1.8,
           ease: "linear",
           top: -700,
-          rotate: 0,
+          rotate: 3,
         }
       )
       .to(
         floatingDecorativeRefs[0].current,
-        
+
         {
           delay: -2.5,
           duration: 3,
@@ -375,7 +367,7 @@ export default function Home() {
       )
       .to(
         floatingDecorativeRefs[1].current,
-        
+
         {
           delay: -3,
           duration: 3,
@@ -430,6 +422,9 @@ export default function Home() {
             height={1000}
             style={{ top: "42%", left: "50%", width: "48%" }}
             ref={emptyMouthRef}
+            onLoadingComplete={() => {
+              console.log("loaded");
+            }}
           />
           <Image
             className="hero-img"
@@ -468,11 +463,11 @@ export default function Home() {
               world feel a little more loving. <br />
               <br /> - Cloe Moreno, TTL Artist, CA
             </div> */}
-            <Polaroid
-              title={"Teen Vogue"}
-              type={"featured on"}
-              imagePath={"/featuredOn/teenVogue.jpeg"}
-            />
+              <Polaroid
+                title={"Teen Vogue"}
+                type={"featured on"}
+                imagePath={"/featuredOn/teenVogue.jpeg"}
+              />
           </div>
           <div className="testimonial testimonial-1" ref={testimonialRefs[1]}>
             <Image

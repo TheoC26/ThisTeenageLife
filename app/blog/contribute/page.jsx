@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //firebase imports for adding doc
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.js";
@@ -16,9 +16,6 @@ const contribute = () => {
   const [type, setType] = useState("poem");
   const [submitConformation, setSubmitConformation] = useState("false");
 
-
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (author == "" || email == "" || title == "" || content == "") {
@@ -27,7 +24,7 @@ const contribute = () => {
         setSubmitConformation("false");
       }, 3000);
       return;
-    };
+    }
     try {
       const docRef = await addDoc(collection(db, "posts"), {
         author: author,
@@ -44,7 +41,6 @@ const contribute = () => {
     } catch (e) {
       console.error("Error adding document: ", e);
       setSubmitConformation("error");
-
     } finally {
       setAuthor("");
       setEmail("");
@@ -52,15 +48,24 @@ const contribute = () => {
       setContent("");
 
       if (submitConformation != "error" && submitConformation != "fields") {
-        console.log("submitted")
+        console.log("submitted");
         setSubmitConformation("true");
       }
-      
-      setTimeout(() => {
-        setSubmitConformation("false");
-      }, 3000);
+
+      // setTimeout(() => {
+      //   setSubmitConformation("false");
+      // }, 3000);
     }
   };
+
+  // useEffect(() => {
+  //   if (submitConformation == "true") {
+  //     setAuthor("");
+  //     setEmail("");
+  //     setTitle("");
+  //     setContent("");
+  //   }
+  // }, [submitConformation]);
 
   return (
     <main className="contributePage">
@@ -215,6 +220,33 @@ const contribute = () => {
           </button>
         </form>
       </div>
+      {console.log(submitConformation)}
+      <dialog open={submitConformation == "true"} className="modal">
+        <div className="modal-content">
+          <h1>Congrats! 🎉</h1>
+          <h2>You have succesfully submitted your blog post :)</h2>
+          <p>Your post will now be reviewed for publishing</p>
+          <div className="buttons">
+            <button
+              onClick={() => {
+                setSubmitConformation("false");
+                window.location.reload();
+              }}
+            >
+              Submit Another!
+            </button>
+            {/* go home button */}
+            <button
+              onClick={() => {
+                setSubmitConformation("false");
+                window.location.href = "/";
+              }}
+            >
+              Visit Blog
+            </button>
+          </div>
+        </div>
+      </dialog>
     </main>
   );
 };

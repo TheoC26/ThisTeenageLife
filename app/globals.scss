@@ -346,6 +346,7 @@ main {
       display: flex;
       background-color: var(--primary-color);
       border-radius: 30px;
+      box-shadow: 0px 4px 15px -2px rgba(255, 255, 255, 0.5);
     }
 
     .searchinput {
@@ -1761,7 +1762,7 @@ main {
     bottom: 20px;
     left: 20px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 10000;
     .snail {
       width: 10rem;
       height: auto;
@@ -1961,6 +1962,71 @@ main {
       //   color: var(--dark-color);
       // }
     }
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    // display: grid;
+    padding: 10rem;
+    place-content: center;
+    z-index: 100000;
+    border: none;
+
+    .modal-content {
+      background-color: var(--background-color);
+      box-shadow: 0px 0px 15px -2px rgba(255, 255, 255, 0.5);
+      padding: 5rem;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--dark-color);
+      }
+
+      .description {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--dark-color);
+      }
+
+      .buttons {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+        button {
+          padding: 1rem;
+          border: none;
+          outline: none;
+          border-radius: 100px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+
+          &.yes {
+            background-color: rgb(155, 231, 170);
+          }
+          &.no {
+            background-color: rgb(255, 155, 155);
+          }
+
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+      }
+    }
+  
   }
 }
 .adminPage {
@@ -2311,7 +2377,7 @@ main {
       font-size: 16px;
       font-weight: bold;
       width: 8rem;
-      margin-top: 0.45rem;
+      margin-top: 0.3rem;
       border: none;
       border-radius: 1000px;
       cursor: pointer;
