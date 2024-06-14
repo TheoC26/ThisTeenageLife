@@ -127,7 +127,7 @@ const blog = () => {
           );
         });
         console.log("changing posts");
-        setSearchedPosts(tempArr);
+        setSearchedPosts(tempArr.filter((post) => post.published));
         // setPosts(tempArr);
       } else {
         // No search, default query
@@ -144,7 +144,7 @@ const blog = () => {
         });
         console.log(tempArr);
 
-        setSearchedPosts(tempArr);
+        setSearchedPosts(tempArr.filter((post) => post.published));
       }
     } catch (err) {
       setError("Failed to load sources");
@@ -214,10 +214,38 @@ const blog = () => {
                 )
             )}
         </div>
-        <TapedPaper />
+        {posts
+          .filter(
+            (post) =>
+              post.published && (post.type == "drawing" || post.type == "photo")
+          )
+          .map(
+            (post, i) =>
+              i == 0 && (
+                <TapedPaper
+                  imageURL={post.imageURL}
+                  title={post.title}
+                  id={post.id}
+                />
+              )
+          )}
       </div>
       <div className="big-right">
-        <TapedPaper />
+        {posts
+          .filter(
+            (post) =>
+              post.published && (post.type == "drawing" || post.type == "photo")
+          )
+          .map(
+            (post, i) =>
+              i == 1 && (
+                <TapedPaper
+                  imageURL={post.imageURL}
+                  title={post.title}
+                  id={post.id}
+                />
+              )
+          )}
         <div>
           {posts
             .filter((post) => !post.featured && post.published)

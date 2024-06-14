@@ -55,7 +55,6 @@ const TeamSection = () => {
     "Aanya",
     "Yashasvi",
     "Sophia",
-    "Sailor",
     "Shreyaan"
   ];
 

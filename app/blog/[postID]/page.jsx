@@ -176,6 +176,7 @@ const blogPost = () => {
       )}
 
       <div className="separator"></div>
+      <div style={{marginBottom: "2rem", fontSize: "1.7rem", fontWeight: "bold"}}>Related Posts</div>
       <div className="col-two">
         {posts &&
           posts

@@ -347,7 +347,7 @@ export default function Home() {
         testimonialRefs[3].current,
 
         {
-          delay: -1.9,
+          delay: -1.6,
           duration: 1.8,
           ease: "linear",
           top: -700,
@@ -380,6 +380,12 @@ export default function Home() {
 
   return (
     <>
+      <div className="loadingScreen">
+        <div className="outside">
+          <div className="typwriter">Welcome to our community!</div>
+        </div>
+          
+      </div>
       <div className="homePageV2Mobile">
         <div className="hero">
           <Image
@@ -463,11 +469,11 @@ export default function Home() {
               world feel a little more loving. <br />
               <br /> - Cloe Moreno, TTL Artist, CA
             </div> */}
-              <Polaroid
-                title={"Teen Vogue"}
-                type={"featured on"}
-                imagePath={"/featuredOn/teenVogue.jpeg"}
-              />
+            <Polaroid
+              title={"Teen Vogue"}
+              type={"featured on"}
+              imagePath={"/featuredOn/teenVogue.jpeg"}
+            />
           </div>
           <div className="testimonial testimonial-1" ref={testimonialRefs[1]}>
             <Image

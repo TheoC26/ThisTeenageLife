@@ -3,6 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 //firebase imports for adding doc
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.js";
+import { storage } from "../../../firebase.js";
+import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
+
+import { v4 as uuid } from "uuid";
+
 // import CustomEditor, { Editor } from "@/components/CustomEditor.jsx";
 import Editor from "@/components/CustomEditor.jsx";
 
@@ -18,43 +23,105 @@ const contribute = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (author == "" || email == "" || title == "" || content == "") {
-      setSubmitConformation("fields");
-      setTimeout(() => {
-        setSubmitConformation("false");
-      }, 3000);
-      return;
-    }
-    try {
-      const docRef = await addDoc(collection(db, "posts"), {
-        author: author,
-        email: email,
-        title: title,
-        searchTitle: title.toLowerCase().split(" "),
-        content: content,
-        type: type,
-        featured: false,
-        published: false,
-        date: new Date(),
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-      setSubmitConformation("error");
-    } finally {
-      setAuthor("");
-      setEmail("");
-      setTitle("");
-      setContent("");
-
-      if (submitConformation != "error" && submitConformation != "fields") {
-        console.log("submitted");
-        setSubmitConformation("true");
+    if (type == "drawing" || type == "photo") {
+      if (
+        author == "" ||
+        email == "" ||
+        title == "" ||
+        image == "" ||
+        description == ""
+      ) {
+        setSubmitConformation("fields");
+        setTimeout(() => {
+          setSubmitConformation("false");
+        }, 3000);
+        return;
       }
+      try {
+        setSubmitConformation("isLoading");
 
-      // setTimeout(() => {
-      //   setSubmitConformation("false");
-      // }, 3000);
+        //upload image to storage
+        // generate unique id using
+        let uniqueID = uuid();
+        console.log(uniqueID);
+        const storageRef = ref(storage, `posts/${uniqueID}`);
+        await uploadBytes(storageRef, image);
+        const url = await getDownloadURL(storageRef);
+
+        const docRef = await addDoc(collection(db, "posts"), {
+          author: author,
+          email: email,
+          title: title,
+          searchTitle: title.toLowerCase().split(" "),
+          imageID: uniqueID,
+          imageURL: url,
+          description: description,
+          type: type,
+          featured: false,
+          published: false,
+          date: new Date(),
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+        setSubmitConformation("error");
+      } finally {
+        setAuthor("");
+        setEmail("");
+        setTitle("");
+        setDescription("");
+        setImage("");
+        setContent("");
+
+        if (submitConformation != "error" && submitConformation != "fields") {
+          console.log("submitted");
+          setSubmitConformation("true");
+        }
+
+        // setTimeout(() => {
+        //   setSubmitConformation("false");
+        // }, 3000);
+      }
+    } else {
+      if (author == "" || email == "" || title == "" || content == "") {
+        setSubmitConformation("fields");
+        setTimeout(() => {
+          setSubmitConformation("false");
+        }, 3000);
+        return;
+      }
+      try {
+        setSubmitConformation("isLoading");
+        const docRef = await addDoc(collection(db, "posts"), {
+          author: author,
+          email: email,
+          title: title,
+          searchTitle: title.toLowerCase().split(" "),
+          content: content,
+          type: type,
+          featured: false,
+          published: false,
+          date: new Date(),
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+        setSubmitConformation("error");
+      } finally {
+        setAuthor("");
+        setEmail("");
+        setTitle("");
+        setContent("");
+
+        if (submitConformation != "error" && submitConformation != "fields") {
+          console.log("submitted");
+          setSubmitConformation("true");
+        }
+
+        // setTimeout(() => {
+        //   setSubmitConformation("false");
+        // }, 3000);
+      }
     }
   };
 
@@ -72,18 +139,32 @@ const contribute = () => {
       <div className="create-blog">
         <h1 className="">Want to create your own blog post?</h1>
         <p>
-          This Teenage Life was founded and is run by a team of inspiring
-          teenagers and an adult named Molly Josephs. They came together while
-          Molly was working at a project-based high school called High Tech High
-          in San Diego, California. Molly has spent the past decade teaching
-          middle and high school biology and computer science, and designing
-          project-based curricula. Since studying biology at Brown University
-          and school leadership at Harvard’s Graduate School of Education, she’s
-          worked in independent, public district, and public charter schools
-          including High Tech High, The Dalton School, Codman Academy, and The
-          Healey School. She also spent three years on a team working to start a
-          new kind of in-district, project-based high school called Powderhouse
-          Studios.
+          Welcome to the This Teenage Life blog! Here you can find all sorts of
+          genres including (but not limited to!): short stories, poems, recipes,
+          essays, and flash fiction, all written by teens for other young
+          people. We are always accepting submissions from youth around the
+          globe, and would love to see what you are working on. Guidelines for
+          submission are below:
+        </p>
+        <ul>
+          <li>
+            Submissions must be no more than 500 words, or approximately 2 pages
+            double spaced
+          </li>
+          <li>
+            Work must be appropriate for all ages Original work only! Your
+            submission cannot be previously published or released anywhere else
+          </li>
+          <li>All submissions must be sent through the submission portal!</li>
+          <li>
+            Pieces will be copy edited for clarity and spelling mistakes. If
+            there are specific spelling choices made, please let us know when
+            submitting!
+          </li>
+        </ul>
+        <p style={{ marginBottom: "1.5rem" }}>
+          If you have any questions, feel free to email us at
+          team@thisteenagelife.org! Thank you!
         </p>
         <form onSubmit={handleSubmit}>
           <input
@@ -216,6 +297,8 @@ const contribute = () => {
               ? "Submit For Review"
               : submitConformation == "fields"
               ? "Fill out all Fields"
+              : submitConformation == "isLoading"
+              ? "Submitting..."
               : "Submission Failed"}
           </button>
         </form>
@@ -239,7 +322,7 @@ const contribute = () => {
             <button
               onClick={() => {
                 setSubmitConformation("false");
-                window.location.href = "/";
+                window.location.href = "/blog";
               }}
             >
               Visit Blog

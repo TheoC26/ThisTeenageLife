@@ -39,14 +39,13 @@ const BlogSearchBar = ({
                   className="searched-blog"
                   key={i}
                 >
-                    <div>
-                         {post.title}
-                    </div>
-                    <div>{post.formattedDate}</div>
-                 
+                  <div>{post.title}</div>
+                  <div>{post.formattedDate}</div>
                 </Link>
               ))}
             {!showSearches && <div>Search for something</div>}
+            {console.log(showSearches && !posts)}
+            {showSearches && !posts && <div>No results</div>}
           </div>
         )}
       </div>

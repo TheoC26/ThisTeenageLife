@@ -339,7 +339,7 @@ main {
     border-radius: 30px;
     outline: none;
     border: none;
-    z-index: 1000;
+    z-index: 10;
     font-family: Arial, Helvetica, sans-serif;
 
     .bar {
@@ -523,6 +523,19 @@ main {
   backdrop-filter: blur(5px);
   position: relative;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: black;
+  // align-items: center;
+
+  img {
+    height: 86%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
 
   .topTape {
     width: 30%;
@@ -1258,7 +1271,7 @@ main {
   background-color: var(--dark-color);
   opacity: 20%;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .decorative {
@@ -1581,7 +1594,7 @@ main {
 
       &.testimonial-0 {
         right: 0%;
-        transform: scale(.8) translateX(50rem);
+        transform: scale(0.8) translateX(50rem);
         font-size: 1.2rem;
         .text {
           width: 25rem;
@@ -1722,7 +1735,7 @@ main {
     &:hover .next {
       display: block;
     }
-     .next {
+    .next {
       position: absolute;
       display: none;
       cursor: pointer;
@@ -2026,7 +2039,6 @@ main {
         }
       }
     }
-  
   }
 }
 .adminPage {
@@ -3264,7 +3276,27 @@ body {
     background-image: url(../public/lexical-icons/justify.svg);
   }
 }
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--background-color);
+  z-index: 1000;
+  display: flex;
+  place-items: center;
+  font-size: 3rem;
 
+  animation: loading 4.5s forwards;
+
+  .outside {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    place-items: center;
+  }
+}
 /* For laptops and tablets */
 @media (max-width: 1199px) {
   // MARK: Hello
@@ -3421,9 +3453,22 @@ body {
     border-radius: 10px;
     position: relative;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+    // align-items: center;
+
+    img {
+      height: 86%;
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
   }
   .searchbar {
-    z-index: 0;
+    z-index: 10;
     .search {
       .searchinput {
         font-size: 16px;
@@ -3464,8 +3509,8 @@ body {
     }
     .searched-posts {
       position: absolute;
-      z-index: 10;
-      top: 46em;
+      z-index: -1;
+      top: 0rem;
       padding: 1rem;
       padding-top: 3rem;
       border-radius: 15px;
@@ -3790,6 +3835,7 @@ body {
     }
   }
 }
+
 
 /* For tablets and mobile devices */
 @media (max-width: 767px) {
@@ -4475,6 +4521,9 @@ body {
       }
     }
   }
+  .loadingScreen {
+    display: none;
+  }
 }
 
 /* For mobile phones in portrait mode */
@@ -4632,7 +4681,6 @@ body {
     }
     .searched-posts {
       position: absolute;
-      z-index: 10;
       top: 46em;
       padding: 1rem;
       padding-top: 3rem;
@@ -4928,7 +4976,6 @@ body {
     padding-inline: 2rem;
     // height: 100rem;
 
-
     // the first .ipod
     .ipod {
       transform: scale(1);
@@ -4948,5 +4995,40 @@ body {
         transform: translateY(0px);
       }
     }
+  }
+}
+
+.typwriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.07em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  width: fit-content;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+@keyframes loading {
+  to {
+    display: none;
   }
 }
