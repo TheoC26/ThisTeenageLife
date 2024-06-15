@@ -63,6 +63,7 @@ const blogPost = () => {
       }
     } catch (err) {
       setError("Failed to load sources");
+      console.log(err)
     } finally {
       setLoading(false);
     }
@@ -76,7 +77,7 @@ const blogPost = () => {
   }, [postData]);
 
   useEffect(() => {
-    const getPosts = async () => {
+    const getPostsv2 = async () => {
       try {
         const collectionRef = collection(db, "/posts");
         const q = query(collectionRef, orderBy("date", "desc"));
@@ -98,7 +99,7 @@ const blogPost = () => {
         // setLoading(false);
       }
     };
-    getPosts();
+    getPostsv2();
   }, []);
 
   function convertDateToFormattedDate(date) {

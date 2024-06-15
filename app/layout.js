@@ -8,6 +8,7 @@ import HeaderGap from '@/components/HeaderGap';
 import Footer from '@/components/Footer';
 import RandomDrawings from '@/components/RandomDrawings';
 import BottomEpisodePlayer from '@/components/BottomEpisodePlayer';
+import Head from 'next/head';
 
 const rubik = Rubik({ subsets: ["latin"] });
 const gochi = Gochi_Hand({ subsets: ["latin"], weight: "400", variable: "--font-gochi" });

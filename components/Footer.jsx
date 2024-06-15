@@ -15,25 +15,28 @@ const Footer = () => {
       <div className="categories">
         <div className="category">
           <div className="title">contact</div>
-          <Link href="#" className="link">
+          <Link href="mailto:team@thisteenagelife.org" className="link">
             Email
           </Link>
-          <Link href="#" className="link">
+          <Link
+            href="https://www.instagram.com/this.teenage.life/"
+            className="link"
+          >
             Intagram
           </Link>
         </div>
         <div className="category">
           <div className="title">links</div>
-          <Link href="#" className="link">
+          <Link href="/" className="link">
             home
           </Link>
-          <Link href="#" className="link">
+          <Link href="/episodes" className="link">
             episodes
           </Link>
-          <Link href="#" className="link">
+          <Link href="/blog" className="link">
             blog
           </Link>
-          <Link href="#" className="link">
+          <Link href="/about" className="link">
             about
           </Link>
           {/* <Link href="#" className="link">
@@ -45,13 +48,13 @@ const Footer = () => {
         </div>
         <div className="category">
           <div className="title">contribute</div>
-          <Link href="#" className="link">
+          <Link href="/blog/contribute" className="link">
             create a blog post
           </Link>
           <Link href="mailto:team@thisteenagelife.org" className="link">
             join the team
           </Link>
-          <Link href="#" className="link">
+          <Link href="mailto:team@thisteenagelife.org" className="link">
             send a message
           </Link>
         </div>
@@ -60,11 +63,17 @@ const Footer = () => {
           <Link href="#" className="link">
             view episodes
           </Link>
-          <Link href="#" className="apple-pod">
+          <Link
+            href="https://podcasts.apple.com/us/podcast/this-teenage-life/id1456067511"
+            className="apple-pod link"
+          >
             Apple Podcasts
           </Link>
-          <Link href="#" className="spotify">
-            spotify
+          <Link
+            href="https://open.spotify.com/show/2YGaei3I55DO2I7FsRUd5h?si=91598de4562a4fcf"
+            className="spotify link"
+          >
+            Spotify
           </Link>
         </div>
       </div>
