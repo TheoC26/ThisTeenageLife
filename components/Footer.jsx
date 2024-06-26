@@ -57,6 +57,12 @@ const Footer = () => {
           <Link href="mailto:team@thisteenagelife.org" className="link">
             send a message
           </Link>
+          <Link
+            href="https://buymeacoffee.com/thisteenagelife"
+            className="link"
+          >
+            support our work
+          </Link>
         </div>
         <div className="category">
           <div className="title">listen</div>

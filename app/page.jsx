@@ -8,6 +8,7 @@ import TeamSection from "@/components/TeamSection";
 import Polaroid from "@/components/Polaroid";
 import FeaturedBlogEpisodes from "@/components/FeaturedBlogEpisodes";
 import Link from "next/link";
+import Coffee from "@/components/Coffee";
 gsap.registerPlugin(ScrollTrigger);
 
 // TODO: make the first thing that comes up the ipod player of newest episode
@@ -384,7 +385,6 @@ export default function Home() {
         <div className="outside">
           <div className="typwriter">Welcome to our community!</div>
         </div>
-          
       </div>
       <div className="homePageV2Mobile">
         <div className="hero">
@@ -473,6 +473,10 @@ export default function Home() {
               title={"Teen Vogue"}
               type={"featured on"}
               imagePath={"/featuredOn/teenVogue.jpeg"}
+              isHome={true}
+              slug={
+                "https://www.teenvogue.com/story/how-podcasting-helped-me-cope-with-pandemic-loneliness"
+              }
             />
           </div>
           <div className="testimonial testimonial-1" ref={testimonialRefs[1]}>
@@ -520,6 +524,10 @@ export default function Home() {
               title={"Brown Alumni Magazine"}
               type={"featured on"}
               imagePath={"/featuredOn/brownAlumni.jpeg"}
+              slug={
+                "https://www.brownalumnimagazine.com/articles/2024-03-15/are-the-kids-alright-molly-josephs-%E2%80%9909-this-teenage-life"
+              }
+              isHome={true}
             />
           </div>
           <div

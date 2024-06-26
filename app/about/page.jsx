@@ -1,3 +1,4 @@
+import Coffee from "@/components/Coffee";
 import FeaturedBlock from "@/components/FeaturedBlock";
 import Image from "next/image";
 import Link from "next/link";
@@ -137,6 +138,7 @@ const page = () => {
           </Link>
         </div>
       </center>
+      <Coffee />
 
       {/* <h2 style={{ marginTop: "3rem" }}>
         Teen Team ✨<div className="tape-section"></div>

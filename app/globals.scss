@@ -1534,7 +1534,7 @@ main {
     height: 100vh;
     width: 95%;
     position: fixed;
-    z-index: -100000;
+    // z-index: -100000;
 
     .decorative {
       position: absolute;
@@ -4523,6 +4523,46 @@ body {
   }
   .loadingScreen {
     display: none;
+  }
+}
+
+.coffee {
+  width: 12rem;
+  height: auto;
+  text-decoration: none;
+  color: black;
+  margin: .5rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  
+  }
+  h3 {
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  animation: jump linear 1s infinite;
+}
+
+// annimation for the coffee where it is jumping left to right
+@keyframes jump {
+  0% {
+    transform: translateY(0) translateX(-5px) rotate(-5deg);
+  }
+  25% {
+    transform: translateY(-10px) translateX(0);
+  }
+  50% {
+    transform: translateY(0) translateX(5px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-10px) translateX(0);
+  }
+  100% {
+    transform: translateY(0) translateX(-5px) rotate(-5deg);
   }
 }
 

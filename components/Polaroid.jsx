@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Polaroid = ({ title, type, name, date, slug, imagePath }) => {
+const Polaroid = ({ title, type, name, date, slug, imagePath, isHome }) => {
+  console.log("isHome: ", isHome, slug)
   return (
-    <Link href={`/blog/${slug}`} style={{ textDecoration: "none" }}>
+    <Link href={!isHome ? `/blog/${slug}`: slug} style={{ textDecoration: "none" }}>
       <div className="polaroid">
         <div className="polaroid-tape-section"></div>
         <div className="type">{type}</div>

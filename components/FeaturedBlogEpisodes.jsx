@@ -131,6 +131,7 @@ const FeaturedBlogEpisodes = () => {
           date={featuredBlogPosts[0] && featuredBlogPosts[0].formattedDate}
           slug={featuredBlogPosts[0] && featuredBlogPosts[0].id}
           imagePath={"/BG-Images/BG-Image-0.png"}
+          isHome={false}
         />
       </div>
       <div className="ipod ipod-2">
@@ -155,6 +156,7 @@ const FeaturedBlogEpisodes = () => {
           date={featuredBlogPosts[1] && featuredBlogPosts[1].formattedDate}
           slug={featuredBlogPosts[1] && featuredBlogPosts[1].id}
           imagePath={"/BG-Images/BG-Image-1.png"}
+          isHome={false}
         />
       </div>
       <div className="blog blog-3">
@@ -165,6 +167,7 @@ const FeaturedBlogEpisodes = () => {
           date={featuredBlogPosts[2] && featuredBlogPosts[2].formattedDate}
           slug={featuredBlogPosts[2] && featuredBlogPosts[2].id}
           imagePath={"/BG-Images/BG-Image-2.png"}
+          isHome={false}
         />
       </div>
     </div>
