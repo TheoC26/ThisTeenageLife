@@ -158,6 +158,9 @@ main {
     align-items: center;
     justify-content: space-between;
   }
+  .logo {
+    flex: 1;
+  }
 
   ul {
     display: flex;

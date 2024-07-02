@@ -30,6 +30,7 @@ export default function Home() {
   const emptyMouthRef = useRef(null);
   const textRef = useRef(null);
   const microphoneRef = useRef(null);
+  const loadingScreenRef = useRef(null);
 
   const quoteRef = useRef(null);
   const testimonialRefs = [
@@ -57,6 +58,12 @@ export default function Home() {
 
   // Paralax Stuff
   useEffect(() => {
+
+    // Loading Screen
+    setTimeout(() => {
+      loadingScreenRef.current.style.display = "none";
+    }, 3500);
+
     let emptyMouthTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".marker",
@@ -381,7 +388,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="loadingScreen">
+      <div className="loadingScreen" ref={loadingScreenRef}>
         <div className="outside">
           <div className="typwriter">Welcome to our community!</div>
         </div>

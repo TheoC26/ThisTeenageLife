@@ -1,11 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
 import Image from "next/image";
 import EpisodeRow from "@/components/EpisodeRow";
 import SearchBar from "@/components/SearchBar";
 
 const episodes = () => {
+  const searchParams = useSearchParams();
+  const urlSearchValue = searchParams.get("search"); 
   const { episodes, setEpisodeNumber, episode, play, setPlay, episodeNumber } =
     useEpisodesv2();
   const [season, setSeason] = useState(6);
@@ -14,8 +17,16 @@ const episodes = () => {
 
   const submitSearch = (e) => {
     e.preventDefault();
+    window.location.href = `/episodes?search=${search}`;
     setIsSearching(true);
   };
+
+  useEffect(() => {
+    if (urlSearchValue) {
+      setSearch(urlSearchValue);
+      setIsSearching(true);
+    }
+  }, [])
 
   useEffect(() => {
     console.log(isSearching);
