@@ -5,6 +5,7 @@ import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
 import Image from "next/image";
 import EpisodeRow from "@/components/EpisodeRow";
 import SearchBar from "@/components/SearchBar";
+import Head from "next/head";
 
 const episodes = () => {
   const searchParams = useSearchParams();
@@ -38,6 +39,9 @@ const episodes = () => {
 
   return (
     <div className="episodesPage">
+      <Head>
+        <title>This Teenage Life - Episodes</title>
+      </Head>
       <div className="top">
         <SearchBar
           type="episode"
