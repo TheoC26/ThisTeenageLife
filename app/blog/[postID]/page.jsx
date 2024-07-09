@@ -21,6 +21,9 @@ import Image from "next/image";
 import BlogPostImage from "@/components/BlogPostImage";
 import RandomDrawings from "@/components/RandomDrawings";
 
+
+
+
 const blogPost = () => {
   const { postID } = useParams();
   const [loading, setLoading] = useState(true);
@@ -29,6 +32,8 @@ const blogPost = () => {
   const [postData, setPostData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState("");
+
+
 
   const getPosts = async () => {
     let userRef;
