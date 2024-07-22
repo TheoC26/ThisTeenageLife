@@ -63,6 +63,7 @@ const about = () => {
   return (
     <main className="aboutPage">
       <div>about</div>
+      <div>new update</div>
       <div className="worldMap">
         {teamMembers.map((person) => (
           <div
