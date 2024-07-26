@@ -1496,6 +1496,102 @@ main {
       // pointer-events: none;
     }
   }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      margin: 0 5rem;
+    }
+  }
+
+  .person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .person {
+      flex-direction: row;
+      margin-left: 7rem;
+    }
+  }
+
+  .person-reverse {
+    flex-direction: column-reverse;
+  }
+  .person-reverse .person-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .person-reverse {
+      flex-direction: row;
+      margin-right: 7rem;
+    }
+    .person-reverse .person-info {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+  }
+
+  .person-info {
+    flex: 1;
+  }
+
+  .person-name {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: bold;
+    margin: 0.75rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    .person-name {
+      font-size: 3rem; /* lg:text-5xl */
+      margin: 1.5rem 0;
+    }
+  }
+
+  .person-description {
+    font-size: 0.875rem; /* text-sm */
+    width: 80%;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .person-description {
+      font-size: 1rem; /* lg:text-base */
+    }
+  }
+
+  .person-name-right {
+    text-align: right;
+  }
+
+  .person-description-right {
+    text-align: right;
+  }
+
+  .person-image {
+    width: 50%;
+    aspect-ratio: 2/1.5;
+  }
+
+  .person-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 3px solid var(--dark-color);
+  }
 }
 .homePageV2 {
   // old version
@@ -3844,7 +3940,6 @@ body {
   }
 }
 
-
 /* For tablets and mobile devices */
 @media (max-width: 767px) {
   main {
@@ -4539,13 +4634,12 @@ body {
   height: auto;
   text-decoration: none;
   color: black;
-  margin: .5rem;
+  margin: 0.5rem;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-  
   }
   h3 {
     text-align: center;

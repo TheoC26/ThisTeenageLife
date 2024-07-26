@@ -20,7 +20,14 @@ const page = () => {
         }}
       >
         <Image src="/navText/aboutus.png" width={300} height={50} />
-        <div style={{ backgroundColor: "white", padding: ".3rem", borderRadius: "5px", marginTop: ".7rem"}}>
+        <div
+          style={{
+            backgroundColor: "white",
+            padding: ".3rem",
+            borderRadius: "5px",
+            marginTop: ".7rem",
+          }}
+        >
           *and our <b>awesome</b> website*
         </div>
       </h2>
@@ -139,6 +146,57 @@ const page = () => {
         </div>
       </center>
       <Coffee />
+      <h2
+        style={{
+          backgroundColor: "white",
+          padding: "1rem",
+          borderRadius: "5px",
+          marginTop: "5rem",
+          marginBottom: "2rem",
+        }}
+      >
+        Website Team ✨<div className="tape-section"></div>
+      </h2>
+      <div class="container">
+        <div class="person">
+          <div class="person-info">
+            <h3 class="person-name">Chloe M</h3>
+            <p class="person-description">
+              Hi! My name is Chloe and I do the episode art for This Teenage
+              Life. I’m currently in Portland Oregon where I love to hike, meet
+              dogs, and rock climb. I’ve been a part of TTL for a while and
+              can’t wait to see where it goes!
+            </p>
+          </div>
+          <div class="person-image">
+            <Image
+              src="/teamPhotos/Chloe.jpeg"
+              width={200}
+              height={200}
+              alt="Chloe"
+            />
+          </div>
+        </div>
+        <div class="person person-reverse">
+          <div class="person-image">
+            <Image
+              src="/teamPhotos/TheodoreChan.jpeg"
+              width={200}
+              height={200}
+              alt="Theodore"
+            />
+          </div>
+          <div class="person-info">
+            <h3 class="person-name person-name-right">Theodore</h3>
+            <p class="person-description person-description-right">
+              Hey! My name is Theodore and I designed and developed the website
+              for This Teenage Life. I am somewhat new to TTL but I am excited
+              to be a part of the team and proud of everything that has been so
+              far!
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* <h2 style={{ marginTop: "3rem" }}>
         Teen Team ✨<div className="tape-section"></div>

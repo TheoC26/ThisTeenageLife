@@ -1,9 +1,16 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-
-const EpisodeRow = ({ title, description, currentEpisode, setCurrentEpisode, index, imgUrl, activityGuide }) => {
+const EpisodeRow = ({
+  title,
+  description,
+  currentEpisode,
+  setCurrentEpisode,
+  index,
+  imgUrl,
+  activityGuide,
+}) => {
   // get the dimentions of the screen on load
   const [screenWidth, setScreenWidth] = useState(0);
   useEffect(() => {
@@ -14,7 +21,7 @@ const EpisodeRow = ({ title, description, currentEpisode, setCurrentEpisode, ind
     };
     window.addEventListener("resize", handleResize);
   }, []);
-  
+
   return (
     <div
       className={`episodeRow ${index == currentEpisode && "active"}`}
@@ -24,7 +31,9 @@ const EpisodeRow = ({ title, description, currentEpisode, setCurrentEpisode, ind
       <div>
         <h3>{title}</h3>
         <div className="description">
-          {screenWidth > 1200
+          {index == currentEpisode
+            ? description
+            : screenWidth > 1200
             ? description.slice(0, 150)
             : screenWidth > 420
             ? description.slice(0, 100)
