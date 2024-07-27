@@ -1,4 +1,5 @@
 "use client";
+import useStateRef from "@/hooks/stateRef";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
@@ -13,6 +14,9 @@ const EpisodeRow = ({
 }) => {
   // get the dimentions of the screen on load
   const [screenWidth, setScreenWidth] = useState(0);
+  const [targetDescription, setTargetDescription, targetDescriptionRef] = useStateRef(150);
+  const [currentDescription, setCurrentDescription, currentDescriptionRef] =
+    useStateRef(150);
   useEffect(() => {
     setScreenWidth(window.innerWidth);
 
@@ -21,6 +25,23 @@ const EpisodeRow = ({
     };
     window.addEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (index == currentEpisode) {
+      setTargetDescription(description.length);
+    } else {
+      setTargetDescription(150);
+    }
+
+    const interval = setInterval(() => {
+      if (currentDescriptionRef.current < targetDescriptionRef.current) {
+        setCurrentDescription(currentDescriptionRef.current + 1);
+      } else if (currentDescriptionRef.current > targetDescriptionRef.current) {
+        setCurrentDescription(currentDescriptionRef.current - 1);
+      }
+    }, 5);
+
+  }, [currentEpisode]);
 
   return (
     <div
@@ -31,14 +52,11 @@ const EpisodeRow = ({
       <div>
         <h3>{title}</h3>
         <div className="description">
-          {index == currentEpisode
+          {/* {index == currentEpisode
             ? description
-            : screenWidth > 1200
-            ? description.slice(0, 150)
-            : screenWidth > 420
-            ? description.slice(0, 100)
-            : description.slice(0, 75)}
-          ...
+            : description.slice(0, 150) + "..."
+          } */}
+          {description.slice(0, currentDescription) + "..."}
         </div>
       </div>
       {/* <div className="playContainer">
