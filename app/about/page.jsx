@@ -145,7 +145,7 @@ const page = () => {
           </Link>
         </div>
       </center>
-      <Coffee />
+      {/* <Coffee /> */}
       <h2
         style={{
           backgroundColor: "white",
