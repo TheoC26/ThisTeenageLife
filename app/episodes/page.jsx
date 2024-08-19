@@ -29,9 +29,9 @@ const episodes = () => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log(isSearching);
-  }, [isSearching]);
+  // useEffect(() => {
+  //   console.log(isSearching);
+  // }, [isSearching]);
 
   useEffect(() => {
     console.log(episodes)

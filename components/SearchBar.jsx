@@ -6,7 +6,6 @@ const SearchBar = ({ type, search, setSearch, submit, setIsSearching }) => {
       className={type == "episode" ? "episodessearchbar" : "searchbar"}
       onSubmit={submit}
     >
-      {console.log(type == "episode")}
       <div className="search">
         <input
           type="text"
@@ -17,7 +16,6 @@ const SearchBar = ({ type, search, setSearch, submit, setIsSearching }) => {
           onFocus={() => setIsSearching(true)}
           onBlur={() => {
             setTimeout(() => setIsSearching(false), 150);
-            console.log("clicked 2");
           }}
         />
         <input type="submit" value="search" className="submit" />
