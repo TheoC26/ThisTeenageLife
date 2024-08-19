@@ -129,7 +129,7 @@ const episodes = () => {
                 src={episode && episode.itunes.image}
                 alt="Featured Episode Cover Image"
                 width={100}
-                height={100}
+                height={100} 
               />
             )}
 

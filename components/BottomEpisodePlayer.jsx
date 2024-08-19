@@ -4,8 +4,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
 
 const BottomEpisodePlayer = () => {
-  const { episodes, setEpisodeNumber, episode, play, setPlay, duration, durationRef, setDuration, currentTime, setCurrentTime, autoPlay, setAutoPlay, isShowing } =
-    useEpisodesv2();
+  const {
+    episodes,
+    setEpisodeNumber,
+    episode,
+    play,
+    setPlay,
+    duration,
+    durationRef,
+    setDuration,
+    currentTime,
+    setCurrentTime,
+    autoPlay,
+    setAutoPlay,
+    isShowing,
+  } = useEpisodesv2();
 
   const playAnimationRef = useRef(null);
   const sliderRef = useRef(null);
@@ -18,7 +31,7 @@ const BottomEpisodePlayer = () => {
 
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
-    }
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -61,11 +74,10 @@ const BottomEpisodePlayer = () => {
       playAnimationRef.current = requestAnimationFrame(repeat);
       audioRef.current.play();
     } else {
-      audioRef.current.pause(); 
+      audioRef.current.pause();
       cancelAnimationFrame(playAnimationRef.current);
     }
   }, [play]);
-
 
   function onLoadedData() {
     setDuration(audioRef.current.duration);
@@ -79,20 +91,24 @@ const BottomEpisodePlayer = () => {
         onLoadedData={onLoadedData}
       ></audio>
       <div className="bottom-player">
-        <Image
-          src={episode && episode.itunes.image}
-          alt="player base"
-          width={100}
-          height={100}
-          className="episodeImage"
-        />
+        {episode && (
+          <Image
+            src={episode.itunes.image}
+            alt="player base"
+            width={100}
+            height={100}
+            className="episodeImage"
+          />
+        )}
+
         <div className="right-side">
           <div className="title">{episode && episode.title}</div>
           <div className="description">
             {episode &&
               (screenWidth > 1000
                 ? episode.contentSnippet.slice(0, 150)
-                : screenWidth > 420 ? episode.contentSnippet.slice(0, 100)
+                : screenWidth > 420
+                ? episode.contentSnippet.slice(0, 100)
                 : episode.contentSnippet.slice(0, 50))}
             ...
           </div>

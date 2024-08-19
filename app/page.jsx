@@ -435,6 +435,7 @@ export default function Home() {
             height={1000}
             style={{ top: "42%", left: "50%", width: "48%" }}
             ref={emptyMouthRef}
+            priority={true}
             onLoadingComplete={() => {
               console.log("loaded");
             }}
