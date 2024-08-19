@@ -56,7 +56,7 @@ const EpisodeRow = ({
             ? description
             : description.slice(0, 150) + "..."
           } */}
-          {description.slice(0, currentDescription) + "..."}
+          {description.slice(0, currentDescription)}{currentDescription < description.length && "..."}
         </div>
       </div>
       {/* <div className="playContainer">
