@@ -160,20 +160,21 @@ const page = () => {
       <div class="container">
         <div class="person">
           <div class="person-info">
-            <h3 class="person-name">Chloe M</h3>
+            <h3 class="person-name">Cloe M</h3>
             <p class="person-description">
               Hi! My name is Chloe and I do the episode art for This Teenage
-              Life. I’m currently in Portland Oregon where I love to hike, meet
+              Life. I’m currently in Portland, Oregon, where I love to hike, meet
               dogs, and rock climb. I’ve been a part of TTL for a while and
               can’t wait to see where it goes!
             </p>
+            <p></p>
           </div>
           <div class="person-image">
             <Image
               src="/teamPhotos/Chloe.jpeg"
               width={200}
               height={200}
-              alt="Chloe"
+              alt="Cloe"
             />
           </div>
         </div>
