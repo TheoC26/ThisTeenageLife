@@ -271,7 +271,7 @@ const contribute = () => {
                 type="file"
                 name="file"
                 id="file"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => {setImage(e.target.files[0]); console.log(e.target.files[0])}}
               />
               <textarea
                 name="content"

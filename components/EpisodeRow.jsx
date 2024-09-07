@@ -1,4 +1,5 @@
 "use client";
+import recources from "@/app/recources/page";
 import useStateRef from "@/hooks/stateRef";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -10,21 +11,34 @@ const EpisodeRow = ({
   setCurrentEpisode,
   index,
   imgUrl,
-  activityGuide,
+  resources,
 }) => {
   // get the dimentions of the screen on load
   const [screenWidth, setScreenWidth] = useState(0);
-  const [targetDescription, setTargetDescription, targetDescriptionRef] = useStateRef(150);
+  const [targetDescription, setTargetDescription, targetDescriptionRef] =
+    useStateRef(150);
   const [currentDescription, setCurrentDescription, currentDescriptionRef] =
     useStateRef(150);
+
+  const [hasResource, setHasResource] = useState(false);
+
   useEffect(() => {
+    // go through all of the recourses and if the episode has a resource, console log it (use the names to match it up)
+    resources.forEach((resource) => {
+      // console.log(resource);
+      if (resource.episodeName == title) {
+        console.log(resource);
+        setHasResource(true);
+      }
+    });
+
     setScreenWidth(window.innerWidth);
 
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
     window.addEventListener("resize", handleResize);
-  }, []);
+  }, [recources]);
 
   useEffect(() => {
     if (index == currentEpisode) {
@@ -40,7 +54,6 @@ const EpisodeRow = ({
         setCurrentDescription(currentDescriptionRef.current - 1);
       }
     }, 5);
-
   }, [currentEpisode]);
 
   return (
@@ -49,6 +62,7 @@ const EpisodeRow = ({
       onClick={() => setCurrentEpisode(index)}
     >
       <Image src={imgUrl} width={100} height={100} alt="cover image" />
+      {hasResource && <div className="resourceIcon">📚</div>}
       <div>
         <h3>{title}</h3>
         <div className="description">
@@ -56,7 +70,8 @@ const EpisodeRow = ({
             ? description
             : description.slice(0, 150) + "..."
           } */}
-          {description.slice(0, currentDescription)}{currentDescription < description.length && "..."}
+          {description.slice(0, currentDescription)}
+          {currentDescription < description.length && "..."}
         </div>
       </div>
       {/* <div className="playContainer">

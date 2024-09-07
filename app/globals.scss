@@ -2543,23 +2543,26 @@ main {
         z-index: 1;
       }
 
-      input[id="seasons-6"]:checked ~ .glider {
+      input[id="seasons-7"]:checked ~ .glider {
         transform: translateX(0);
       }
-      input[id="seasons-5"]:checked ~ .glider {
+      input[id="seasons-6"]:checked ~ .glider {
         transform: translateX(100%);
       }
-      input[id="seasons-4"]:checked ~ .glider {
+      input[id="seasons-5"]:checked ~ .glider {
         transform: translateX(200%);
       }
-      input[id="seasons-3"]:checked ~ .glider {
+      input[id="seasons-4"]:checked ~ .glider {
         transform: translateX(300%);
       }
-      input[id="seasons-2"]:checked ~ .glider {
+      input[id="seasons-3"]:checked ~ .glider {
         transform: translateX(400%);
       }
-      input[id="seasons-1"]:checked ~ .glider {
+      input[id="seasons-2"]:checked ~ .glider {
         transform: translateX(500%);
+      }
+      input[id="seasons-1"]:checked ~ .glider {
+        transform: translateX(600%);
       }
 
       // input[type="radio"]:checked + label {
@@ -2570,60 +2573,75 @@ main {
   }
   .episodes-container {
     display: flex;
-    .ipod-player {
-      // width: 16rem;
+    .left-side-container {
       position: sticky;
       top: 5rem;
       height: 24rem;
-      aspect-ratio: 1/1.5;
-      border-radius: 45px;
-      background-color: var(--background-color);
-      // position: relative;
-      padding: 1.3rem;
-      padding-top: 1.5rem;
+      .ipod-player {
+        // width: 16rem;
+        margin-bottom: 1.5rem;
+        height: 24rem;
+        aspect-ratio: 1/1.5;
+        border-radius: 45px;
+        background-color: var(--background-color);
+        // position: relative;
+        padding: 1.3rem;
+        padding-top: 1.5rem;
 
-      button {
-        border: 3px solid var(--primary-color);
-        border: none;
-      }
+        button {
+          border: 3px solid var(--primary-color);
+          border: none;
+        }
 
-      .featuredEpisodeImageContainer {
-        width: 100%;
-        aspect-ratio: 1/1;
-        border-radius: 20px;
-        background-color: white;
-        position: relative;
-
-        .image {
+        .featuredEpisodeImageContainer {
           width: 100%;
-          height: 100%;
-          object-fit: contain;
-          padding: 10px;
+          aspect-ratio: 1/1;
+          border-radius: 20px;
+          background-color: white;
+          position: relative;
+
+          .image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+          }
+          .title {
+            font-size: 12px;
+            opacity: 60%;
+            font-weight: bold;
+            color: var(--dark-color);
+            position: absolute;
+            bottom: 0.5rem;
+            left: 1rem;
+          }
         }
-        .title {
-          font-size: 12px;
-          opacity: 60%;
-          font-weight: bold;
-          color: var(--dark-color);
-          position: absolute;
-          bottom: 0.5rem;
-          left: 1rem;
+
+        .controlIconContianer {
+          background-color: white;
+          margin: auto;
+          margin-top: 1rem;
+          width: 5.9rem;
+          height: 5.9rem;
+          border-radius: 50%;
+          padding: 1rem;
+          display: grid;
+          place-content: center;
+          cursor: pointer;
         }
       }
-
-      .controlIconContianer {
-        background-color: white;
-        margin: auto;
-        margin-top: 1rem;
-        width: 5.9rem;
-        height: 5.9rem;
-        border-radius: 50%;
+      .view-recource {
+        color: white;
         padding: 1rem;
-        display: grid;
-        place-content: center;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: none;
         cursor: pointer;
+        background-color: var(--primary-color);
       }
     }
+
     .episodes-list {
       // height: 65vh;
       border-radius: 30px;
