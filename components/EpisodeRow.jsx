@@ -62,7 +62,7 @@ const EpisodeRow = ({
       onClick={() => setCurrentEpisode(index)}
     >
       <Image src={imgUrl} width={100} height={100} alt="cover image" />
-      {hasResource && <div className="resourceIcon">📚</div>}
+      {hasResource && <div className="resourceIcon">⭐️</div>}
       <div>
         <h3>{title}</h3>
         <div className="description">

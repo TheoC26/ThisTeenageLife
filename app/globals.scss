@@ -1550,13 +1550,20 @@ main {
   .person-name {
     font-size: 1.875rem; /* text-3xl */
     font-weight: bold;
-    margin: 0.75rem 0;
+    // margin: 0.75rem 0;
+  }
+  .subtitle {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: bold;
+    color: var(--dark-color);
+    opacity: 60%;
+    margin-bottom: 1.5rem;
   }
 
   @media (min-width: 1024px) {
     .person-name {
       font-size: 3rem; /* lg:text-5xl */
-      margin: 1.5rem 0;
+      // margin: 1.5rem 0;
     }
   }
 

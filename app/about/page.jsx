@@ -161,8 +161,9 @@ const page = () => {
         <div class="person">
           <div class="person-info">
             <h3 class="person-name">Cloe M</h3>
+            <p class="subtitle">Artist</p>
             <p class="person-description">
-              Hi! My name is Chloe and I do the episode art for This Teenage
+              Hi! My name is Cloe and I do the episode art for This Teenage
               Life. I’m currently in Portland, Oregon, where I love to hike, meet
               dogs, and rock climb. I’ve been a part of TTL for a while and
               can’t wait to see where it goes!
@@ -189,6 +190,7 @@ const page = () => {
           </div>
           <div class="person-info">
             <h3 class="person-name person-name-right">Theodore</h3>
+            <p class="subtitle">Software Engineer</p>
             <p class="person-description person-description-right">
               Hey! My name is Theodore and I designed and developed the website
               for This Teenage Life. I am somewhat new to TTL but I am excited

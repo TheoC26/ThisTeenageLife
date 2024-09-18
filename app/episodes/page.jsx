@@ -15,7 +15,7 @@ const episodes = () => {
   const urlSearchValue = searchParams.get("search");
   const { episodes, setEpisodeNumber, episode, play, setPlay, episodeNumber } =
     useEpisodesv2();
-  const [season, setSeason] = useState(6);
+  const [season, setSeason] = useState(7);
   const [isSearching, setIsSearching] = useState(false);
   const [search, setSearch] = useState("");
   const [resources, setResources] = useState([]);
