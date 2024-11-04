@@ -9,7 +9,9 @@ export async function GET(req) {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "s-maxage=60, stale-while-revalidate=30",
+        "Cache-Control": "no-store",
+        "revalidate": "0",
+        // "Cache-Control": "s-maxage=60, stale-while-revalidate=30",
       },
     });
   } catch (error) {
@@ -17,7 +19,8 @@ export async function GET(req) {
       status: 500,
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "s-maxage=60, stale-while-revalidate=30",
+        "Cache-Control": "no-store",
+        "revalidate": "0",
       },
     });
   }
