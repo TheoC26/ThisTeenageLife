@@ -164,8 +164,8 @@ const page = () => {
             <p class="subtitle">Artist</p>
             <p class="person-description">
               Hi! My name is Cloe and I do the episode art for This Teenage
-              Life. I’m currently in Portland, Oregon, where I love to hike, meet
-              dogs, and rock climb. I’ve been a part of TTL for a while and
+              Life. I’m currently in Portland, Oregon, where I love to hike,
+              meet dogs, and rock climb. I’ve been a part of TTL for a while and
               can’t wait to see where it goes!
             </p>
             <p></p>
@@ -197,6 +197,28 @@ const page = () => {
               to be a part of the team and proud of everything that has been so
               far!
             </p>
+          </div>
+        </div>
+        <div class="person">
+          <div class="person-info">
+            <h3 class="person-name">Molly J</h3>
+            <p class="subtitle">TTL Director</p>
+            <p class="person-description">
+              Molly Josephs is a project-based educator who, with an inspiring
+              team of teenagers, founded and runs TTL. TTL's dialogue-centered
+              community was inspired by her longtime work with Seeds of Peace.
+              In addition to running TTL, Molly has spent the past 15 years
+              teaching middle and high school biology and computer science.
+            </p>
+            <p></p>
+          </div>
+          <div class="person-image">
+            <Image
+              src="/teamPhotos/MollyJosephs.png"
+              width={200}
+              height={200}
+              alt="Molly J"
+            />
           </div>
         </div>
       </div>

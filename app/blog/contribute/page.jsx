@@ -137,9 +137,9 @@ const contribute = () => {
   return (
     <main className="contributePage">
       <div className="create-blog">
-        <h1 className="">Want to create your own blog post?</h1>
+        <h1 className="">Want to create your own zine post?</h1>
         <p>
-          Welcome to the This Teenage Life blog! Here you can find all sorts of
+          Welcome to the This Teenage Life zine! Here you can find all sorts of
           genres including (but not limited to!): short stories, poems, recipes,
           essays, and flash fiction, all written by teens for other young
           people. We are always accepting submissions from youth around the

@@ -35,7 +35,7 @@ const Header = () => {
             <Link className="link" href="/blog">
               {/* Blog */}
               <Image
-                src="/navText/Blog.png"
+                src="/navText/Zine.png"
                 width={100}
                 height={100}
                 alt="Blog"

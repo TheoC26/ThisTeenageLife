@@ -184,6 +184,12 @@ main {
           object-fit: contain;
         }
       }
+      &:nth-child(2) {
+        img {
+          height: 30px;
+          // background-color: white;
+        }
+      }
       &:nth-child(3) {
         img {
           height: 32px;

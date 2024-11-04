@@ -176,7 +176,7 @@ const blog = () => {
       </Link>
       <div className="heading">
         <div className="tape-section"></div>
-        TTL Blog: For Teens by Teens
+        TTL Zine: For Teens by Teens
       </div>
       <Polaroids featured={posts.filter((post) => post.featured == true)} />
       <BlogSearchBar
