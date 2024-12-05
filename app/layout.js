@@ -1,5 +1,6 @@
 import { EpisodesProvider } from '@/context/EpisodesContext';
 import { Episodesv2Provider } from '@/context/EpisdoesContextv2';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from '@/components/Header';
 import './globals.scss'
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <Episodesv2Provider>
       <html lang="en">
+        <SpeedInsights />
         <body className={gochi.variable}>
           {/* <RandomDrawings /> */}
           <BottomEpisodePlayer />
