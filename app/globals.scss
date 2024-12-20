@@ -653,6 +653,56 @@ main {
   }
 }
 
+.episodeDetailsPage {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .episodeHeader {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .metadata {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      color: var(--dark-color);
+      opacity: 0.8;
+    }
+  }
+
+  .playerSection {
+    max-width: 400px;
+    margin: 2rem auto;
+  }
+
+  .description {
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .transcript {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--primary-color);
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .transcriptText {
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+  }
+}
+
 .blogImage {
   width: 100%;
   aspect-ratio: 1 / 0.9;
@@ -872,6 +922,8 @@ main {
   gap: 2.5rem;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 
   &.active {
     background-color: var(--primary-color);
@@ -1008,6 +1060,146 @@ main {
     }
   }
 }
+.email-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.email-popup {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: popIn 0.3s ease-out;
+
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-color);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .popup-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: var(--dark-color);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      input {
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: var(--secondary-color);
+        }
+
+        &.error {
+          border-color: #ff6b6b;
+        }
+
+        &.success {
+          border-color: #51cf66;
+        }
+      }
+
+      button {
+        padding: 0.75rem;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 10px;
+        color: var(--dark-color);
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+
+    .status-message {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      
+      &.success {
+        background-color: #51cf66;
+        color: white;
+      }
+      
+      &.error {
+        background-color: #ff6b6b;
+        color: white;
+      }
+    }
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .floating-menu {
   display: flex; /* Equivalent to flex */
   align-items: center; /* Equivalent to items-center */
@@ -4641,7 +4833,7 @@ body {
       grid-row: span 1;
 
       &.ipod-3 {
-        transform: scale(1) translateY(0px);
+        // transform: scale(1) translateY(0px);
       }
     }
     .blog {
@@ -5178,7 +5370,48 @@ body {
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
   width: fit-content;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 1s steps(40, end), blink-caret 0.6s step-end infinite;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  .pagination-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--dark-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover:not(:disabled) {
+      background-color: var(--secondary-color);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .current-page {
+    font-weight: bold;
+    color: var(--dark-color);
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--dark-color);
+  font-weight: bold;
 }
 
 @keyframes typing {
@@ -5204,4 +5437,185 @@ body {
   to {
     display: none;
   }
+}
+
+.email-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.email-popup {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: popIn 0.3s ease-out;
+
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-color);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .popup-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: var(--dark-color);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      input {
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: var(--secondary-color);
+        }
+
+        &.error {
+          border-color: #ff6b6b;
+        }
+
+        &.success {
+          border-color: #51cf66;
+        }
+      }
+
+      button {
+        padding: 0.75rem;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 10px;
+        color: var(--dark-color);
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+
+    .status-message {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      
+      &.success {
+        background-color: #51cf66;
+        color: white;
+      }
+      
+      &.error {
+        background-color: #ff6b6b;
+        color: white;
+      }
+    }
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  .pagination-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--dark-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover:not(:disabled) {
+      background-color: var(--secondary-color);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .current-page {
+    font-weight: bold;
+    color: var(--dark-color);
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--dark-color);
+  font-weight: bold;
 }

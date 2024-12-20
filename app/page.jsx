@@ -62,7 +62,7 @@ export default function Home() {
     // Loading Screen
     setTimeout(() => {
       loadingScreenRef.current.style.display = "none";
-    }, 3500);
+    }, 1500);
 
     let emptyMouthTimeline = gsap.timeline({
       scrollTrigger: {

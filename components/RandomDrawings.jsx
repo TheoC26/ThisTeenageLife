@@ -30,7 +30,6 @@ const RandomDrawings = () => {
     while (doesArrayHaveDuplicates(drawingsStuff[0])) {
       drawingsStuff = createDrawingsArray(numberOfDrawings);
     }
-    console.log(drawingsStuff[1]);
     setDrawings(drawingsStuff[0]);
     setDrawingsTop(drawingsStuff[1]);
     if (typeof document !== "undefined") {
@@ -50,8 +49,6 @@ const RandomDrawings = () => {
       }}
     >
       {drawings.map((drawing, i) => (
-        <>
-        {console.log(drawingsTop[i])}
         <Image
           key={i}
           className={`BG-Image ${i % 2 === 0 ? "left" : "right"}`}
@@ -63,7 +60,6 @@ const RandomDrawings = () => {
           width={100}
           height={100}
         />
-        </>
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import { EpisodesProvider } from '@/context/EpisodesContext';
 import { Episodesv2Provider } from '@/context/EpisdoesContextv2';
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import EmailPopup from '@/components/EmailPopup';
 import Header from '@/components/Header';
 import './globals.scss'
 import { Rubik, Gochi_Hand } from 'next/font/google'
@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
           <Header />
           <HeaderGap />
           {children}
+          <EmailPopup />
           <Footer />
         </body>
       </html>

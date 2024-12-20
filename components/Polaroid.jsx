@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 const Polaroid = ({ title, type, name, date, slug, imagePath, isHome }) => {
-  console.log("isHome: ", isHome, slug)
   return (
     <Link href={!isHome ? `/blog/${slug}`: slug} style={{ textDecoration: "none" }}>
       <div className="polaroid">

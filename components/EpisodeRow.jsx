@@ -3,6 +3,7 @@ import recources from "@/app/recources/page";
 import useStateRef from "@/hooks/stateRef";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const EpisodeRow = ({
   title,
@@ -57,27 +58,21 @@ const EpisodeRow = ({
   }, [currentEpisode]);
 
   return (
-    <div
-      className={`episodeRow ${index == currentEpisode && "active"}`}
-      onClick={() => setCurrentEpisode(index)}
-    >
+     <Link href={`/episodes/${encodeURIComponent(title)}`} className="episodeRow">
       <Image src={imgUrl} width={100} height={100} alt="cover image" />
       {hasResource && <div className="resourceIcon">⭐️</div>}
       <div>
         <h3>{title}</h3>
-        <div className="description">
-          {/* {index == currentEpisode
-            ? description
-            : description.slice(0, 150) + "..."
-          } */}
+        {/* <div className="description">
           {description.slice(0, currentDescription)}
           {currentDescription < description.length && "..."}
-        </div>
+        </div> */}
+        <div className="description">{description.slice(0, 175)}...</div>
       </div>
       {/* <div className="playContainer">
         <Image src={"/icons/play.svg"} style={index == currentEpisode && {opacity: "0"}} width={30} height={30} alt="play" />
       </div> */}
-    </div>
+    </Link>
   );
 };
 
