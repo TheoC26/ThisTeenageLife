@@ -58,7 +58,7 @@ const Footer = () => {
             send a message
           </Link>
           <Link
-            href="https://buymeacoffee.com/thisteenagelife"
+            href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY"
             className="link"
           >
             support our work
