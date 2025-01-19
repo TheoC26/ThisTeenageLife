@@ -14,7 +14,7 @@ export default function EpisodeDetails({ params }) {
     const fetchEpisodeData = async () => {
       try {
         const q = query(
-          collection(db, "episodes"),
+          collection(db, "episode"),
           where("name", "==", decodeURIComponent(params.episode))
         );
         const querySnapshot = await getDocs(q);

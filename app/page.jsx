@@ -398,8 +398,9 @@ export default function Home() {
           <Image
             src={"/TTL-Mouth/ttlLogoFull.png"}
             alt="empty mouth"
-            width={500}
-            height={500}
+            width={100}
+            height={100}
+            priority={true}
           />
         </div>
         <div className="quote">

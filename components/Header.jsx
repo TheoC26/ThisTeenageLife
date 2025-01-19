@@ -17,6 +17,7 @@ const Header = () => {
             alt="Logo"
             width={60}
             height={60}
+            priority={true}
           />
         </Link>
         <ul>
@@ -25,9 +26,10 @@ const Header = () => {
               {/* Episodes */}
               <Image
                 src="/navText/Episodes.png"
-                width={100}
-                height={100}
+                width={50}
+                height={50}
                 alt="Episodes"
+                priority={true}
               />
             </Link>
           </li>
@@ -36,9 +38,10 @@ const Header = () => {
               {/* Blog */}
               <Image
                 src="/navText/Zine.png"
-                width={100}
-                height={100}
+                width={50}
+                height={50}
                 alt="Blog"
+                priority={true}
               />
             </Link>
           </li>
@@ -47,9 +50,10 @@ const Header = () => {
               {/* About */}
               <Image
                 src="/navText/About.png"
-                width={100}
-                height={100}
+                width={50}
+                height={50}
                 alt="About"
+                priority={true}
               />
             </Link>
           </li>
@@ -60,11 +64,12 @@ const Header = () => {
           </li> */}
           {/* <li>
             <Link className="link" href="#">
-              merch
+              Support
             </Link>
           </li> */}
         </ul>
       </div>
+      
     </div>
   );
 };

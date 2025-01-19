@@ -78,7 +78,7 @@ const Blog = () => {
             where("featured", "==", false),
             where("published", "==", true),
             orderBy("date", "desc"),
-            limit(POSTS_PER_PAGE)
+            limit(POSTS_PER_PAGE),
           );
         } else if (isNewPage && lastDoc) {
           // Subsequent pages of forward pagination
@@ -88,7 +88,7 @@ const Blog = () => {
             where("published", "==", true),
             orderBy("date", "desc"),
             startAfter(lastDoc),
-            limit(POSTS_PER_PAGE)
+            limit(POSTS_PER_PAGE),
           );
         }
       } else if (direction === "backward") {
