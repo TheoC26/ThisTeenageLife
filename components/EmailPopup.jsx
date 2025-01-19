@@ -75,18 +75,26 @@ const EmailPopup = () => {
   return (
     <div className="email-popup-overlay">
       <div className="email-popup">
-        <button 
+        <button
           className="close-button"
           onClick={() => {
             setShowPopup(false);
-            localStorage.setItem('hasSeenEmailPopup', 'true');
+            localStorage.setItem("hasSeenEmailPopup", "true");
           }}
         >
           ×
         </button>
 
         <div className="popup-content">
-          <Image 
+          <iframe
+            src="https://thisteenagelife.substack.com/embed"
+            width="320"
+            height="320"
+            // style="border:1px solid #EEE; background:white;"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+          {/* <Image 
             src="/TTL-Mouth/ttlLogoFull.png"
             alt="TTL Logo"
             width={200}
@@ -117,7 +125,7 @@ const EmailPopup = () => {
             <div className="status-message error">
               {errorMessage}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

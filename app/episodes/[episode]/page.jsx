@@ -22,7 +22,18 @@ export default function EpisodeDetails({ params }) {
         if (!querySnapshot.empty) {
           const doc = querySnapshot.docs[0];
           setEpisodeData(doc.data());
-          setTranscript(doc.data().transcript || "");
+
+          // Process transcript to insert <br /> tags
+          const processedTranscript = doc
+            .data()
+            .transcript.split(/(\b\w+\s*\b\w*(?=\s*\:)|\b\w*(?=\:))/g) // Match speaker names or numbers before a colon
+            .map((segment, idx) =>
+              idx % 2 === 1 ? `<br /><br />${segment}` : segment
+            ) // Add <br /> before each speaker change
+            .join("")
+            .trim();
+
+          setTranscript(processedTranscript);
         }
       } catch (error) {
         console.error("Error fetching episode data:", error);
@@ -32,7 +43,6 @@ export default function EpisodeDetails({ params }) {
     fetchEpisodeData();
   }, [params.episode]);
 
-  // Find matching episode from RSS feed
   const rssFeedEpisode = episodes.find(
     (ep) => ep.title === decodeURIComponent(params.episode)
   );
@@ -64,7 +74,11 @@ export default function EpisodeDetails({ params }) {
           {transcript && (
             <div className="transcript">
               <h2>Episode Transcript</h2>
-              <div className="transcriptText">{transcript}</div>
+              {/* Render transcript as HTML */}
+              <div
+                className="transcriptText"
+                dangerouslySetInnerHTML={{ __html: transcript }}
+              ></div>
             </div>
           )}
         </>

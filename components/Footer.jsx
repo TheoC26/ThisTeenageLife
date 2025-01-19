@@ -51,17 +51,26 @@ const Footer = () => {
           <Link href="/blog/contribute" className="link">
             create a blog post
           </Link>
-          <Link href="mailto:team@thisteenagelife.org" className="link">
+          <Link
+            href="mailto:team@thisteenagelife.org"
+            className="link"
+            target="_blank"
+          >
             join the team
           </Link>
-          <Link href="mailto:team@thisteenagelife.org" className="link">
+          <Link
+            href="mailto:team@thisteenagelife.org"
+            className="link"
+            target="_blank"
+          >
             send a message
           </Link>
           <Link
             href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY"
             className="link"
+            target="_blank"
           >
-            support our work
+            Support our work
           </Link>
         </div>
         <div className="category">

@@ -7,6 +7,8 @@ import useScrollDirection from "@/hooks/scrollDirectionHook";
 const Header = () => {
   const scrollDirection = useScrollDirection();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className={`header ${scrollDirection === "down" && ""}`}>
       <div className="inside">
@@ -69,7 +71,94 @@ const Header = () => {
           </li> */}
         </ul>
       </div>
-      
+      <div className="hamberger">
+        <div
+          className={`line1 ${isOpen && "open"}`}
+          onClick={() => setIsOpen(!isOpen)}
+        ></div>
+        <div
+          className={`line2 ${isOpen && "open"}`}
+          onClick={() => setIsOpen(!isOpen)}
+        ></div>
+        <div
+          className={`line3 ${isOpen && "open"}`}
+          onClick={() => setIsOpen(!isOpen)}
+        ></div>
+      </div>
+      <div className={`mobileMenu ${isOpen && "open"}`}>
+        <div className="insideMobile">
+          <Link href={"/"}>
+            <Image
+              className="logo"
+              src="/Logo.svg"
+              alt="Logo"
+              width={60}
+              height={60}
+              priority={true}
+            />
+          </Link>
+          <ul>
+            <li>
+              <Link
+                className="link"
+                href="/episodes"
+                onClick={() => setIsOpen(false)}
+              >
+                {/* Episodes */}
+                <Image
+                  src="/navText/Episodes.png"
+                  width={50}
+                  height={50}
+                  alt="Episodes"
+                  priority={true}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="link"
+                href="/blog"
+                onClick={() => setIsOpen(false)}
+              >
+                {/* Blog */}
+                <Image
+                  src="/navText/Zine.png"
+                  width={50}
+                  height={50}
+                  alt="Blog"
+                  priority={true}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="link"
+                href="/about"
+                onClick={() => setIsOpen(false)}
+              >
+                {/* About */}
+                <Image
+                  src="/navText/About.png"
+                  width={50}
+                  height={50}
+                  alt="About"
+                  priority={true}
+                />
+              </Link>
+            </li>
+            {/* <li>
+                <Link className="link" href="/recources">
+                  resources
+                </Link>
+              </li> */}
+            {/* <li>
+                <Link className="link" href="#">
+                  Support
+                </Link>
+              </li> */}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
