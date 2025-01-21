@@ -70,24 +70,19 @@ const Header = () => {
             </Link>
           </li> */}
         </ul>
-      </div>
-      <div className="hamberger">
-        <div
-          className={`line1 ${isOpen && "open"}`}
-          onClick={() => setIsOpen(!isOpen)}
-        ></div>
-        <div
-          className={`line2 ${isOpen && "open"}`}
-          onClick={() => setIsOpen(!isOpen)}
-        ></div>
-        <div
-          className={`line3 ${isOpen && "open"}`}
-          onClick={() => setIsOpen(!isOpen)}
-        ></div>
+        <div className="hamberger" onClick={() => setIsOpen(!isOpen)}>
+          <span className={`line1`}></span>
+          <span className={`line2`}></span>
+          <span className={`line3`}></span>
+        </div>
       </div>
       <div className={`mobileMenu ${isOpen && "open"}`}>
+        <div className="close" onClick={() => setIsOpen(!isOpen)}>
+          <span className={`line1`}></span>
+          <span className={`line2`}></span>
+        </div>
         <div className="insideMobile">
-          <Link href={"/"}>
+          {/* <Link href={"/"} onClick={() => setIsOpen(false)}>
             <Image
               className="logo"
               src="/Logo.svg"
@@ -96,7 +91,7 @@ const Header = () => {
               height={60}
               priority={true}
             />
-          </Link>
+          </Link> */}
           <ul>
             <li>
               <Link
@@ -107,8 +102,8 @@ const Header = () => {
                 {/* Episodes */}
                 <Image
                   src="/navText/Episodes.png"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   alt="Episodes"
                   priority={true}
                 />
@@ -123,8 +118,8 @@ const Header = () => {
                 {/* Blog */}
                 <Image
                   src="/navText/Zine.png"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   alt="Blog"
                   priority={true}
                 />
@@ -139,8 +134,8 @@ const Header = () => {
                 {/* About */}
                 <Image
                   src="/navText/About.png"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   alt="About"
                   priority={true}
                 />
