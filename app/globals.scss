@@ -286,7 +286,7 @@ main {
     }
   }
   .hamberger {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     gap: 0.5rem;
