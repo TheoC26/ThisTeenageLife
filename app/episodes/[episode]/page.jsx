@@ -8,7 +8,7 @@ import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
 export default function EpisodeDetails({ params }) {
   const [episodeData, setEpisodeData] = useState(null);
   const [transcript, setTranscript] = useState("");
-  const { episodes, setEpisodeNumber } = useEpisodesv2();
+  const { episodes, setEpisodeNumber, episodeNumber, play, setPlay } = useEpisodesv2();
 
   useEffect(() => {
     const fetchEpisodeData = async () => {
@@ -66,6 +66,9 @@ export default function EpisodeDetails({ params }) {
               item={rssFeedEpisode}
               setEpisodeNumber={setEpisodeNumber}
               episodes={episodes}
+              episodeNumber={episodeNumber}
+              isPlaying={play}
+              setIsPlaying={setPlay}
             />
           </div>
 

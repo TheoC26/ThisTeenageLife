@@ -14,7 +14,7 @@ const Footer = () => {
       />
       <div className="categories">
         <div className="category">
-          <div className="title">contact</div>
+          <div className="title">Socials</div>
           <Link href="mailto:team@thisteenagelife.org" className="link">
             Email
           </Link>
@@ -22,22 +22,25 @@ const Footer = () => {
             href="https://www.instagram.com/this.teenage.life/"
             className="link"
           >
-            Intagram
+            Instagram
+          </Link>
+          <Link href="https://pin.it/1kMKrSiRX" className="link">
+            Pinterest
           </Link>
         </div>
         <div className="category">
-          <div className="title">links</div>
+          <div className="title">Links</div>
           <Link href="/" className="link">
-            home
+            Home
           </Link>
           <Link href="/episodes" className="link">
-            episodes
+            Episodes
           </Link>
           <Link href="/blog" className="link">
-            blog
+            Zine
           </Link>
           <Link href="/about" className="link">
-            about
+            About
           </Link>
           {/* <Link href="#" className="link">
             recources
@@ -47,23 +50,23 @@ const Footer = () => {
           </Link> */}
         </div>
         <div className="category">
-          <div className="title">contribute</div>
+          <div className="title">Contribute</div>
           <Link href="/blog/contribute" className="link">
-            create a blog post
+            Create a blog post
           </Link>
           <Link
             href="mailto:team@thisteenagelife.org"
             className="link"
             target="_blank"
           >
-            join the team
+            Join the team
           </Link>
           <Link
             href="mailto:team@thisteenagelife.org"
             className="link"
             target="_blank"
           >
-            send a message
+            Send a message
           </Link>
           <Link
             href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY"
@@ -74,9 +77,9 @@ const Footer = () => {
           </Link>
         </div>
         <div className="category">
-          <div className="title">listen</div>
+          <div className="title">Listen</div>
           <Link href="#" className="link">
-            view episodes
+            View episodes
           </Link>
           <Link
             href="https://podcasts.apple.com/us/podcast/this-teenage-life/id1456067511"

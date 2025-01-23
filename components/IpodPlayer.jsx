@@ -2,15 +2,34 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const IpodPlayer = ({ item, setEpisodeNumber, episodes }) => {
+const IpodPlayer = ({ item, setEpisodeNumber, episodes, episodeNumber, isPlaying, setIsPlaying }) => {
   // find the index of the object item in the list episodes
   const [index, setIndex] = useState(0);
+  const [play, setPlay] = useState(true);
 
   useEffect(() => {
     const index = episodes.findIndex((episode) => episode.title === item.title);
     console.log(index)
     setIndex(index);
   }, [episodes]);
+
+  useEffect(() => {
+    console.log(index, episodeNumber)
+    if (index === episodeNumber && isPlaying) {
+      setPlay(true);
+    } else {
+      setPlay(false);
+    }
+  }, [index, episodeNumber, isPlaying]);
+
+  function handleClick() {
+    if (index === episodeNumber) {
+      setPlay(!play);
+      setIsPlaying(!isPlaying);
+    } else { 
+      setEpisodeNumber(index);
+    }
+  }
 
   return (
     <div className="ipodPlayer" style={{ backgroundColor: "#f0dcff" }}>
@@ -26,11 +45,11 @@ const IpodPlayer = ({ item, setEpisodeNumber, episodes }) => {
       </div>
       <button
         className="controlIconContianer"
-        onClick={() => setEpisodeNumber(index)}
+        onClick={handleClick}
       >
         <Image
-          src={`/icons/play.svg`}
-          style={{ transform: "translateX(2px)" }}
+          src={`/icons/${play ? "pause" : "play"}.svg`}
+          style={!play && { transform: "translateX(2px)" }}
           alt="play"
           width={60}
           height={60}

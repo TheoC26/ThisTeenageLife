@@ -8,7 +8,7 @@ import { db } from "../firebase.js";
 import Image from "next/image";
 
 const FeaturedBlogEpisodes = () => {
-  const { episodes, setEpisodeNumber } = useEpisodesv2();
+  const { episodes, setEpisodeNumber, episodeNumber, play } = useEpisodesv2();
   const [featuredBlogPosts, setFeaturedBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -121,6 +121,8 @@ const FeaturedBlogEpisodes = () => {
           item={episodes[0]}
           setEpisodeNumber={setEpisodeNumber}
           episodes={episodes}
+          episodeNumber={episodeNumber}
+          isPlaying={play}
         />
       </div>
       <div className="blog blog-1">
@@ -139,6 +141,8 @@ const FeaturedBlogEpisodes = () => {
           item={episodes[1]}
           setEpisodeNumber={setEpisodeNumber}
           episodes={episodes}
+          episodeNumber={episodeNumber}
+          isPlaying={play}
         />
       </div>
       <div className="ipod ipod-3">
@@ -146,6 +150,8 @@ const FeaturedBlogEpisodes = () => {
           item={episodes[2]}
           setEpisodeNumber={setEpisodeNumber}
           episodes={episodes}
+          episodeNumber={episodeNumber}
+          isPlaying={play}
         />
       </div>
       <div className="blog blog-2">
