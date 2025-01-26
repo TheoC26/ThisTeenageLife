@@ -422,11 +422,11 @@ export default function Home() {
       </div>
       <main className="homePageV2">
         <div
-          class="downarrow"
+          className="downarrow"
           style={{ display: scroll > 15 ? "none" : "block" }}
         >
-          <div class="left"></div>
-          <div class="right"></div>
+          <div className="left"></div>
+          <div className="right"></div>
         </div>
 
         <div className="marker"></div>

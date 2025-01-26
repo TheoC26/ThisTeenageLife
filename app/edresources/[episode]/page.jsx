@@ -15,7 +15,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../firebase.js";
 
-const EducationalRecourcePage = () => {
+const EducationalResourcePage = () => {
   const { episode } = useParams();
   // episode name should be the episode name from the url but with spaces instead of %20 and and : instead of %3A
   const [episodeName, setEpisodeName] = useState(
@@ -54,7 +54,7 @@ const EducationalRecourcePage = () => {
       <RandomDrawings />
       {/* <SearchBar type="blog" /> */}
       <div className="heading">
-        <div className="title">Educational Recource</div>
+        <div className="title">Educational Resource</div>
         <div className="author">{episodeName}</div>
       </div>
       <div className="separator" style={{ width: "50%" }}></div>
@@ -66,4 +66,4 @@ const EducationalRecourcePage = () => {
   );
 };
 
-export default EducationalRecourcePage;
+export default EducationalResourcePage;

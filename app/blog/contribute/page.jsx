@@ -135,7 +135,7 @@ const contribute = () => {
   // }, [submitConformation]);
 
   return (
-    <main className="contributePage">
+    <main className="contributeBlogPage">
       <div className="create-blog">
         <h1 className="">Want to create your own zine post?</h1>
         <p>

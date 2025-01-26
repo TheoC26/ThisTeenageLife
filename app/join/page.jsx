@@ -64,7 +64,7 @@ const contribute = () => {
 
 
   return (
-    <main className="contributePage">
+    <main className="contributeBlogPage">
         <RandomDrawings />
       <div className="create-blog">
         <h1 className="">Want to join a TTL dialogue group?</h1>

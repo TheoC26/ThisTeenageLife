@@ -15,13 +15,14 @@ export async function generateMetadata({ params }) {
     return {
       title: `TTL - ${data.title || episodeName}`,
       description:
-        data.description || "Listen to this episode of This Teenage Life!",
+        data.description ||
+        "View this Educational Resource of This Teenage Life!",
     };
   }
 
   return {
     title: `TTL - ${episodeName}`,
-    description: "Listen to this episode of This Teenage Life!",
+    description: "View this Educational Resource of This Teenage Life!",
   };
 }
 
@@ -30,3 +31,5 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+

@@ -157,12 +157,12 @@ const page = () => {
       >
         Website Team ✨<div className="tape-section"></div>
       </h2>
-      <div class="container">
-        <div class="person">
-          <div class="person-info">
-            <h3 class="person-name">Cloe M</h3>
-            <p class="subtitle">Artist</p>
-            <p class="person-description">
+      <div className="container">
+        <div className="person">
+          <div className="person-info">
+            <h3 className="person-name">Cloe M</h3>
+            <p className="subtitle">Artist</p>
+            <p className="person-description">
               Hi! My name is Cloe and I do the episode art for This Teenage
               Life. I’m currently in Portland, Oregon, where I love to hike,
               meet dogs, and rock climb. I’ve been a part of TTL for a while and
@@ -170,7 +170,7 @@ const page = () => {
             </p>
             <p></p>
           </div>
-          <div class="person-image">
+          <div className="person-image">
             <Image
               src="/teamPhotos/Chloe.jpeg"
               width={200}
@@ -179,8 +179,8 @@ const page = () => {
             />
           </div>
         </div>
-        <div class="person person-reverse">
-          <div class="person-image">
+        <div className="person person-reverse">
+          <div className="person-image">
             <Image
               src="/teamPhotos/TheodoreChan.jpeg"
               width={200}
@@ -188,10 +188,10 @@ const page = () => {
               alt="Theodore"
             />
           </div>
-          <div class="person-info">
-            <h3 class="person-name person-name-right">Theodore</h3>
-            <p class="subtitle">Software Engineer</p>
-            <p class="person-description person-description-right">
+          <div className="person-info">
+            <h3 className="person-name person-name-right">Theodore</h3>
+            <p className="subtitle">Software Engineer</p>
+            <p className="person-description person-description-right">
               Hey! My name is Theodore and I designed and developed the website
               for This Teenage Life. I am somewhat new to TTL but I am excited
               to be a part of the team and proud of everything that has been so
@@ -199,11 +199,11 @@ const page = () => {
             </p>
           </div>
         </div>
-        <div class="person">
-          <div class="person-info">
-            <h3 class="person-name">Molly J</h3>
-            <p class="subtitle">TTL Director</p>
-            <p class="person-description">
+        <div className="person">
+          <div className="person-info">
+            <h3 className="person-name">Molly J</h3>
+            <p className="subtitle">TTL Director</p>
+            <p className="person-description">
               Molly Josephs is a project-based educator who, with an inspiring
               team of teenagers, founded and runs TTL. TTL's dialogue-centered
               community was inspired by her longtime work with Seeds of Peace.
@@ -212,7 +212,7 @@ const page = () => {
             </p>
             <p></p>
           </div>
-          <div class="person-image">
+          <div className="person-image">
             <Image
               src="/teamPhotos/MollyJosephs.png"
               width={200}

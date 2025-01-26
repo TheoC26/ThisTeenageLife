@@ -1,5 +1,4 @@
 "use client";
-import recources from "@/app/recources/page";
 import useStateRef from "@/hooks/stateRef";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -25,13 +24,13 @@ const EpisodeRow = ({
 
   useEffect(() => {
     // go through all of the recourses and if the episode has a resource, console log it (use the names to match it up)
-    resources.forEach((resource) => {
-      // console.log(resource);
-      if (resource.episodeName == title) {
-        console.log(resource);
-        setHasResource(true);
-      }
-    });
+    // resources.forEach((resource) => {
+    //   // console.log(resource);
+    //   if (resource.episodeName == title) {
+    //     console.log(resource);
+    //     setHasResource(true);
+    //   }
+    // });
 
     setScreenWidth(window.innerWidth);
 
@@ -39,7 +38,7 @@ const EpisodeRow = ({
       setScreenWidth(window.innerWidth);
     };
     window.addEventListener("resize", handleResize);
-  }, [recources]);
+  }, []);
 
   useEffect(() => {
     if (index == currentEpisode) {
@@ -60,7 +59,7 @@ const EpisodeRow = ({
   return (
      <Link href={`/episodes/${encodeURIComponent(title)}`} className="episodeRow">
       <Image src={imgUrl} width={100} height={100} alt="cover image" />
-      {hasResource && <div className="resourceIcon">⭐️</div>}
+      {/* {hasResource && <div className="resourceIcon">⭐️</div>} */}
       <div>
         <h3>{title}</h3>
         {/* <div className="description">

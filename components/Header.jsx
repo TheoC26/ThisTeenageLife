@@ -48,6 +48,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
+            <Link className="link" href="/edresources">
+              <Image
+                src="/navText/EdResources.png"
+                width={50}
+                height={50}
+                alt="About"
+                priority={true}
+              />
+            </Link>
+          </li>
+          <li>
             <Link className="link" href="/about">
               {/* About */}
               <Image
@@ -59,11 +70,17 @@ const Header = () => {
               />
             </Link>
           </li>
-          {/* <li>
-            <Link className="link" href="/recources">
-              resources
+          <li>
+            <Link className="link" href="/contribute">
+              <Image
+                src="/navText/Contribute.png"
+                width={50}
+                height={50}
+                alt="About"
+                priority={true}
+              />
             </Link>
-          </li> */}
+          </li>
           {/* <li>
             <Link className="link" href="#">
               Support
@@ -125,6 +142,23 @@ const Header = () => {
                 />
               </Link>
             </li>
+
+            <li>
+              <Link
+                className="link"
+                href="/edresources"
+                onClick={() => setIsOpen(false)}
+              >
+                <Image
+                  src="/navText/EdResources.png"
+                  width={100}
+                  height={100}
+                  alt="About"
+                  priority={true}
+                />
+              </Link>
+            </li>
+
             <li>
               <Link
                 className="link"
@@ -134,6 +168,21 @@ const Header = () => {
                 {/* About */}
                 <Image
                   src="/navText/About.png"
+                  width={100}
+                  height={100}
+                  alt="About"
+                  priority={true}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="link"
+                href="/contribute"
+                onClick={() => setIsOpen(false)}
+              >
+                <Image
+                  src="/navText/Contribute.png"
                   width={100}
                   height={100}
                   alt="About"

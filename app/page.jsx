@@ -419,11 +419,11 @@ export default function Home() {
       {/* --- DESKTOP ---  */}
       <main className="homePageV3">
         <div
-          class="downarrow"
+          className="downarrow"
           style={{ display: scroll > 15 ? "none" : "block" }}
         >
-          <div class="left"></div>
-          <div class="right"></div>
+          <div className="left"></div>
+          <div className="right"></div>
         </div>
 
         <div className="spacer"></div>

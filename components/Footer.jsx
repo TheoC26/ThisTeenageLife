@@ -5,6 +5,18 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="footer">
+      <div className="copywrite">© {new Date().getFullYear()} This Teenage Life</div>
+      <div className="credit">
+        Website by{" "}
+        <Link
+          href={"https://theodore-chan.com/"}
+          target="_blank"
+          className="font-bold"
+        >
+          Theodore Chan
+        </Link>
+      </div>
+
       <Image
         className="logo"
         src={"/LogoMouth.png"}
@@ -39,8 +51,14 @@ const Footer = () => {
           <Link href="/blog" className="link">
             Zine
           </Link>
+          <Link href="/edresources" className="link">
+            Educational Resources
+          </Link>
           <Link href="/about" className="link">
             About
+          </Link>
+          <Link href="/contribute" className="link">
+            Contribute
           </Link>
           {/* <Link href="#" className="link">
             recources
@@ -54,11 +72,7 @@ const Footer = () => {
           <Link href="/blog/contribute" className="link">
             Create a blog post
           </Link>
-          <Link
-            href="mailto:team@thisteenagelife.org"
-            className="link"
-            target="_blank"
-          >
+          <Link href="/join" className="link">
             Join the team
           </Link>
           <Link

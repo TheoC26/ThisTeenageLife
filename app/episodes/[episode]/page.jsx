@@ -4,6 +4,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/firebase";
 import IpodPlayer from "@/components/IpodPlayer";
 import { useEpisodesv2 } from "@/context/EpisdoesContextv2";
+import Link from "next/link";
 
 export default function EpisodeDetails({ params }) {
   const [episodeData, setEpisodeData] = useState(null);
@@ -22,8 +23,12 @@ export default function EpisodeDetails({ params }) {
         if (!querySnapshot.empty) {
           const doc = querySnapshot.docs[0];
           setEpisodeData(doc.data());
+          console.log(doc.data());
 
           // Process transcript to insert <br /> tags
+          if (!doc.data().transcript) {
+            return;
+          }
           const processedTranscript = doc
             .data()
             .transcript.split(/(\b\w+\s*\b\w*(?=\s*\:)|\b\w*(?=\:))/g) // Match speaker names or numbers before a colon
@@ -39,6 +44,8 @@ export default function EpisodeDetails({ params }) {
         console.error("Error fetching episode data:", error);
       }
     };
+
+      
 
     fetchEpisodeData();
   }, [params.episode]);
@@ -73,6 +80,15 @@ export default function EpisodeDetails({ params }) {
           </div>
 
           <div className="description">{rssFeedEpisode.contentSnippet}</div>
+
+          {episodeData && episodeData.hasRecource && (
+            <Link
+              href={`/edresources/${encodeURIComponent(rssFeedEpisode.title)}`}
+              className="viewResource"
+            >
+              View this episode's educational resource
+            </Link>
+          )}
 
           {transcript && (
             <div className="transcript">

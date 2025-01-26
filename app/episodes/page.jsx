@@ -45,7 +45,7 @@ const episodes = () => {
       }
     };
 
-    getEducationalResources();
+    // getEducationalResources();
   }, []);
 
   useEffect(() => {

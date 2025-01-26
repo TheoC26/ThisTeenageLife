@@ -19,14 +19,14 @@ export async function generateMetadata({ params, searchParams }) {
       const url = await getDownloadURL(storageRef);
       data.imageURL = url;
       return {
-        title: "This Teenage Life - " + data.title,
+        title: "TTL - " + data.title,
         description: data.description,
         image: data.imageURL,
       };
     }
 
     return {
-      title: "This Teenage Life - " + data.title,
+      title: "TTL - " + data.title,
       description: data.content,
     };
   }

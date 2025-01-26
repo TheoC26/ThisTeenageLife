@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
-const TapeRow = ({ title, type, name, id }) => {
+const TapeRow = ({ title, type, name, id, isEpisode=false }) => {
   return (
     <Link
-      href={`/blog/${id}`}
+      href={isEpisode ? `edresources/${id}` : `/blog/${id}`}
       className="tapeRow"
       style={{
         transform:
@@ -16,10 +16,22 @@ const TapeRow = ({ title, type, name, id }) => {
         width: Math.random() * 10 + 95 + "%",
       }}
     >
-      <div className="title">{title.slice(0, 40)}{title.length > 35 && "..."}</div>
-      <div className="type-name">
-        {type} • {name}
-      </div>
+      {isEpisode ? (
+        <div className="title">
+          {title.slice(0, 100)}
+          {title.length > 95 && "..."}
+        </div>
+      ) : (
+        <>
+          <div className="title">
+            {title.slice(0, 40)}
+            {title.length > 35 && "..."}
+          </div>
+          <div className="type-name">
+            {type} • {name}
+          </div>
+        </>
+      )}
     </Link>
   );
 };
