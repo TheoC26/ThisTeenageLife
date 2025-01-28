@@ -15,6 +15,7 @@ const Contribute = () => {
         <Link
           href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY"
           className="contribute-card primary"
+          target="_blank"
         >
           <div className="card-content">
             <Image

@@ -33,7 +33,6 @@ const TopMediaPlayer = ({ item, autoPlay, page }) => {
           durationRef.current
         );
         setCurrentTime(audioRef.current.currentTime);
-        console.log(x, percent, audioRef.current.currentTime);
       };
       const mouseUp = () => {
         window.removeEventListener("mousemove", mouseMove);
@@ -64,7 +63,6 @@ const TopMediaPlayer = ({ item, autoPlay, page }) => {
       audioRef.current.pause();
       cancelAnimationFrame(playAnimationRef.current);
     }
-    console.log(audioRef.current.currentTime);
   }, [play]);
 
   function onLoadedData() {

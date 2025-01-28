@@ -9,12 +9,10 @@ const IpodPlayer = ({ item, setEpisodeNumber, episodes, episodeNumber, isPlaying
 
   useEffect(() => {
     const index = episodes.findIndex((episode) => episode.title === item.title);
-    console.log(index)
     setIndex(index);
   }, [episodes]);
 
   useEffect(() => {
-    console.log(index, episodeNumber)
     if (index === episodeNumber && isPlaying) {
       setPlay(true);
     } else {

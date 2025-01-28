@@ -43,7 +43,6 @@ const contribute = () => {
         //upload image to storage
         // generate unique id using
         let uniqueID = uuid();
-        console.log(uniqueID);
         const storageRef = ref(storage, `posts/${uniqueID}`);
         await uploadBytes(storageRef, image);
         const url = await getDownloadURL(storageRef);
@@ -61,7 +60,6 @@ const contribute = () => {
           published: false,
           date: new Date(),
         });
-        console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
         setSubmitConformation("error");
@@ -74,7 +72,6 @@ const contribute = () => {
         setContent("");
 
         if (submitConformation != "error" && submitConformation != "fields") {
-          console.log("submitted");
           setSubmitConformation("true");
         }
 
@@ -103,7 +100,6 @@ const contribute = () => {
           published: false,
           date: new Date(),
         });
-        console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
         setSubmitConformation("error");
@@ -303,7 +299,6 @@ const contribute = () => {
           </button>
         </form>
       </div>
-      {console.log(submitConformation)}
       <dialog open={submitConformation == "true"} className="modal">
         <div className="modal-content">
           <h1>Congrats! 🎉</h1>

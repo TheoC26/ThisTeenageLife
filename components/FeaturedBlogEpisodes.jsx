@@ -30,7 +30,6 @@ const FeaturedBlogEpisodes = () => {
             })
           );
         });
-        console.log(tempArr);
         setFeaturedBlogPosts(tempArr);
       } catch (err) {
         setError("Failed to load sources");

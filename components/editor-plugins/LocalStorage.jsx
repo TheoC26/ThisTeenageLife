@@ -9,7 +9,6 @@ export function LocalStoragePlugin({ namespace }) {
 
   const saveContent = useCallback(
     (content) => {
-        console.log('saveContent', content)
       localStorage.setItem(namespace, content);
     },
     [namespace]

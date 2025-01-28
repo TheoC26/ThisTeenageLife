@@ -136,7 +136,6 @@ export default function Editor({ setContent }) {
       setXScroll(e.target.scrollLeft);
       console.log(e.target.scrollLeft);
     });
-    console.log(leftArrowRef);
     if (rightArrowRef.current != null) {
       rightArrowRef.current.addEventListener("click", () => {
         toolbarRef.current.scrollLeft = 110;

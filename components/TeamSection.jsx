@@ -77,7 +77,6 @@ const TeamSection = () => {
                 page * 16 -1 < i &&
                 i < page * 16 + 16 && (
                   <div className="person" key={i}>
-                    {console.log(i)}
                     <Image
                       priority={true}
                       src={`/teamPhotos/${name

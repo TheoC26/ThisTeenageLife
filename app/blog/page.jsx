@@ -72,7 +72,6 @@ const Blog = () => {
       if (direction === "forward") {
         if (isNewPage && !lastDoc) {
           // First page of forward pagination
-          console.log("fetching first page");
           q = query(
             collection(db, "/posts"),
             where("featured", "==", false),
@@ -115,7 +114,6 @@ const Blog = () => {
       }
 
       const snapshot = await getDocs(q);
-      console.log(snapshot.docs.length);
 
       // Update pagination state based on direction
       if (direction === "forward") {
@@ -144,7 +142,6 @@ const Blog = () => {
       // );
       setPosts(newPosts);
 
-      console.log({ [currentPage]: newPosts });
       setPageCache((prev) => ({
         ...prev,
         [currentPageRef.current]: newPosts,
@@ -154,7 +151,6 @@ const Blog = () => {
       setError("Failed to load posts");
       console.error(err);
     } finally {
-      console.log("page cache", pageCacheRef.current );
       setLoading(false);
     }
   };
@@ -201,7 +197,6 @@ const Blog = () => {
   const handlePageChange = async (newPage) => {
     // Check if the page is already in the cache
     if (pageCacheRef.current[newPage]) {
-      console.log(newPage, "is cached");
       // If cached, simply set the posts from the cache
       setPosts(pageCacheRef.current[newPage]);
       setCurrentPage(newPage);
@@ -223,7 +218,6 @@ const Blog = () => {
       //   ...prev,
       //   [newPage]: posts, // Assuming 'posts' is the state variable holding current posts
       // }));
-      console.log("page cache", pageCacheRef.current);
     } catch (error) {
       console.error("Error fetching page:", error);
     }
@@ -271,7 +265,6 @@ const Blog = () => {
   async function searchPosts(e) {
     if (e) e.preventDefault();
     try {
-      console.log("searching...");
       const collectionRef = collection(db, "/posts");
 
       if (search) {
@@ -292,7 +285,6 @@ const Blog = () => {
             })
           );
         });
-        console.log("changing posts");
         setSearchedPosts(tempArr.filter((post) => post.published));
         // setPosts(tempArr);
       } else {
@@ -308,7 +300,6 @@ const Blog = () => {
             })
           );
         });
-        console.log(tempArr);
 
         setSearchedPosts(tempArr.filter((post) => post.published));
       }

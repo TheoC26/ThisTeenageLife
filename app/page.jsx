@@ -27,6 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   // Hero Section
   const [scroll, setScroll] = useState(0);
+  const [referrer, setReferrer] = useState("");
   const emptyMouthRef = useRef(null);
   const textRef = useRef(null);
   const microphoneRef = useRef(null);
@@ -51,6 +52,14 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    if (document.referrer == "") {
+      setTimeout(() => {
+        loadingScreenRef.current.style.display = "none";
+      }, 1500);
+    } else {
+      loadingScreenRef.current.style.display = "none";
+    }
+
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY);
     });
@@ -58,12 +67,6 @@ export default function Home() {
 
   // Paralax Stuff
   useEffect(() => {
-
-    // Loading Screen
-    setTimeout(() => {
-      loadingScreenRef.current.style.display = "none";
-    }, 1500);
-
     let emptyMouthTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".marker",
@@ -437,9 +440,6 @@ export default function Home() {
             style={{ top: "42%", left: "50%", width: "48%" }}
             ref={emptyMouthRef}
             priority={true}
-            onLoadingComplete={() => {
-              console.log("loaded");
-            }}
           />
           <Image
             className="hero-img"
@@ -599,4 +599,3 @@ export default function Home() {
     </>
   );
 }
-

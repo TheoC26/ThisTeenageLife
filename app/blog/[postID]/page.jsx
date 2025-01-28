@@ -125,7 +125,6 @@ const blogPost = () => {
   function removeTags(str) {
     if (str === null || str === "") return false;
     else str = str.toString();
-    console.log(str, str.replace(/(<([^>]+)>)/gi, ""));
     return str.replace(/(<([^>]+)>)/gi, "");
   }
 

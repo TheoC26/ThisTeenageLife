@@ -54,7 +54,6 @@ const contribute = () => {
 
 
         if (submitConformation != "error" && submitConformation != "fields") {
-          console.log("submitted");
           setSubmitConformation("true");
         }
 

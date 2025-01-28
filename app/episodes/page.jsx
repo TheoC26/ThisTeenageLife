@@ -38,7 +38,6 @@ const episodes = () => {
         const snapshot = await getDocs(collection(db, "educationalResources"));
         snapshot.forEach((doc) => {
           setResources((prev) => [...prev, doc.data()]);
-          console.log(doc.id, "=>", doc.data());
         });
       } catch (error) {
         console.error(error);

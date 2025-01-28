@@ -38,7 +38,6 @@ const EducationalResourcePage = () => {
           return;
         }
         docSnap.forEach((doc) => {
-          console.log(doc.id, "=>", doc.data());
           setPostContent(doc.data().content);
         });
       } catch (e) {

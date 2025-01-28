@@ -268,7 +268,6 @@ function BlockOptionsDropdownList({
 
     if (toolbar !== null && dropDown !== null) {
       const { top, left } = toolbar.getBoundingClientRect();
-      console.log(top, left);
       dropDown.style.top = `50px`;
       dropDown.style.left = `20px`;
     }

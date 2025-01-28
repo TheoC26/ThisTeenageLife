@@ -23,7 +23,6 @@ export default function EpisodeDetails({ params }) {
         if (!querySnapshot.empty) {
           const doc = querySnapshot.docs[0];
           setEpisodeData(doc.data());
-          console.log(doc.data());
 
           // Process transcript to insert <br /> tags
           if (!doc.data().transcript) {

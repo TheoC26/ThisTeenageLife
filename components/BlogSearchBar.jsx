@@ -24,7 +24,6 @@ const BlogSearchBar = ({
             onFocus={() => setIsSearching(true)}
             onBlur={() => {
               setTimeout(() => setIsSearching(false), 150);
-              console.log("clicked 2");
             }}
           />
           <input type="submit" value="search" className="submit" />
@@ -44,7 +43,6 @@ const BlogSearchBar = ({
                 </Link>
               ))}
             {!showSearches && <div>Search for something</div>}
-            {console.log(showSearches && !posts)}
             {showSearches && !posts && <div>No results</div>}
           </div>
         )}
