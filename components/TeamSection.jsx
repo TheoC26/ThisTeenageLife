@@ -100,7 +100,7 @@ const TeamSection = () => {
           height={1000}
         />
       <div className="next back" onClick={() => page >=1 && setPage(page-1)}>Back</div>
-      <div className="next" onClick={() => page <=2 && setPage(page+1)}>Next</div>
+      <div className="next" onClick={() => page <=1 && setPage(page+1)}>Next</div>
       </div>
     </div>
   );
