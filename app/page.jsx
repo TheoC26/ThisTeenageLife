@@ -52,12 +52,15 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    if (document.referrer == "") {
+    if (
+      document.referrer == "https://www.thisteenagelife.org/" ||
+      document.referrer == "http://localhost:3000/"
+    ) {
+      loadingScreenRef.current.style.display = "none";
+    } else {
       setTimeout(() => {
         loadingScreenRef.current.style.display = "none";
       }, 1500);
-    } else {
-      loadingScreenRef.current.style.display = "none";
     }
 
     window.addEventListener("scroll", () => {
@@ -69,7 +72,7 @@ export default function Home() {
   useEffect(() => {
     let emptyMouthTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: ".marker",
+        // trigger: ".marker",
         start: "0px 0px",
         end: "4000px top",
         scrub: 1.5,
