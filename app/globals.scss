@@ -4423,8 +4423,14 @@ body {
     // curent version
     display: block;
     .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
       img {
         width: 100%;
+        max-width: 60rem;
         height: auto;
         object-fit: cover;
         border-radius: 30px;
