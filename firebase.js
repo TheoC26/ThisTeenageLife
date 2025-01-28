@@ -9,23 +9,32 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDPKVxxnV_DIVvRQq3yo_4mUNSkokWundg",
+//   authDomain: "this-teenage-life.firebaseapp.com",
+//   projectId: "this-teenage-life",
+//   storageBucket: "this-teenage-life.appspot.com",
+//   messagingSenderId: "1057048893100",
+//   appId: "1:1057048893100:web:76f47435f3f4f0d6e1f109",
+//   measurementId: "G-T59365HLRK",
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDPKVxxnV_DIVvRQq3yo_4mUNSkokWundg",
-  authDomain: "this-teenage-life.firebaseapp.com",
-  projectId: "this-teenage-life",
-  storageBucket: "this-teenage-life.appspot.com",
-  messagingSenderId: "1057048893100",
-  appId: "1:1057048893100:web:76f47435f3f4f0d6e1f109",
-  measurementId: "G-T59365HLRK",
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
-export const analytics =
-  typeof window !== "undefined" ? getAnalytics(app) : null; 
-
+// export const analytics =
+//   typeof window !== "undefined" ? getAnalytics(app) : null;
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);

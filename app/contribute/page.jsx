@@ -10,24 +10,30 @@ const Contribute = () => {
       <RandomDrawings />
       <h1>Ways to Contribute</h1>
       <p className="subtitle">Join our community and make a difference!</p>
-      
+
       <div className="contribute-grid">
-        <Link href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY" className="contribute-card primary">
+        <Link
+          href="https://donate.stripe.com/14kdUCc0HaAy9SEfYY"
+          className="contribute-card primary"
+        >
           <div className="card-content">
-            <Image 
-              src="/decoratives/coffee.png"
+            <Image
+              src="/decoratives/supportOurWork.png"
               width={80}
               height={80}
               alt="Support icon"
             />
             <h2>Support our work</h2>
-            <p>Help us continue creating meaningful content and fostering teen dialogue</p>
+            <p>
+              Help us continue creating meaningful content and fostering teen
+              dialogue
+            </p>
           </div>
         </Link>
 
         <Link href="/join" className="contribute-card">
           <div className="card-content">
-            <Image 
+            <Image
               src="/decoratives/headphones1.png"
               width={80}
               height={80}
@@ -40,8 +46,8 @@ const Contribute = () => {
 
         <Link href="/blog/contribute" className="contribute-card">
           <div className="card-content">
-            <Image 
-              src="/decoratives/snail.png"
+            <Image
+              src="/decoratives/wannaContribute.png"
               width={80}
               height={80}
               alt="Write icon"
@@ -51,10 +57,13 @@ const Contribute = () => {
           </div>
         </Link>
 
-        <Link href="mailto:team@thisteenagelife.org" className="contribute-card">
+        <Link
+          href="mailto:team@thisteenagelife.org"
+          className="contribute-card"
+        >
           <div className="card-content">
-            <Image 
-              src="/decoratives/wannaContribute.png"
+            <Image
+              src="/decoratives/sendAMessage.png"
               width={80}
               height={80}
               alt="Message icon"
@@ -65,7 +74,7 @@ const Contribute = () => {
         </Link>
       </div>
     </main>
-  )
+  );
 }
 
 export default Contribute

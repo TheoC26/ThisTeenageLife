@@ -9,6 +9,7 @@ import HeaderGap from '@/components/HeaderGap';
 import Footer from '@/components/Footer';
 import RandomDrawings from '@/components/RandomDrawings';
 import BottomEpisodePlayer from '@/components/BottomEpisodePlayer';
+import { CSPostHogProvider } from "./providers";
 import Head from 'next/head';
 
 const rubik = Rubik({ subsets: ["latin"] });
@@ -23,16 +24,18 @@ export default function RootLayout({ children }) {
   return (
     <Episodesv2Provider>
       <html lang="en">
-        <SpeedInsights />
-        <body className={gochi.variable}>
-          {/* <RandomDrawings /> */}
-          <BottomEpisodePlayer />
-          <Header />
-          <HeaderGap />
-          {children}
-          <EmailPopup />
-          <Footer />
-        </body>
+        <CSPostHogProvider>
+          <SpeedInsights />
+          <body className={gochi.variable}>
+            {/* <RandomDrawings /> */}
+            <BottomEpisodePlayer />
+            <Header />
+            <HeaderGap />
+            {children}
+            <EmailPopup />
+            <Footer />
+          </body>
+        </CSPostHogProvider>
       </html>
     </Episodesv2Provider>
   );

@@ -88,9 +88,16 @@ const Header = () => {
           </li> */}
         </ul>
         <div className="hamberger" onClick={() => setIsOpen(!isOpen)}>
-          <span className={`line1`}></span>
+          {/* <span className={`line1`}></span>
           <span className={`line2`}></span>
-          <span className={`line3`}></span>
+          <span className={`line3`}></span> */}
+          <Image
+            src="/navText/Menu.png"
+            alt="Hamburger Menu"
+            width={50}
+            height={50}
+            priority={true}
+          />
         </div>
       </div>
       <div className={`mobileMenu ${isOpen && "open"}`}>
