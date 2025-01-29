@@ -32,9 +32,6 @@ const EdResources = () => {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
-  const snailRef = useRef(null);
-  const wannaContributeRef = useRef(null);
-
   const fetchResources = async () => {
     try {
       setLoading(true);

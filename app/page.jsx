@@ -56,6 +56,7 @@ export default function Home() {
       document.referrer == "https://www.thisteenagelife.org/" ||
       document.referrer == "http://localhost:3000/"
     ) {
+      console.log("referrer", document.referrer);
       loadingScreenRef.current.style.display = "none";
     } else {
       setTimeout(() => {
