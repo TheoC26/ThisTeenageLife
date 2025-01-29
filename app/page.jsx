@@ -52,6 +52,7 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    console.log("referrer", document.referrer);
     if (
       document.referrer == "https://www.thisteenagelife.org/" ||
       document.referrer == "http://localhost:3000/"
