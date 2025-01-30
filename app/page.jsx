@@ -55,7 +55,8 @@ export default function Home() {
     console.log("referrer", document.referrer);
     if (
       document.referrer == "https://www.thisteenagelife.org/" ||
-      document.referrer == "http://localhost:3000/"
+      document.referrer == "http://localhost:3000/" ||
+      document.referrer == "https://thisteenagelife.org/"
     ) {
       console.log("referrer", document.referrer);
       loadingScreenRef.current.style.display = "none";
