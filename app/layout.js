@@ -17,7 +17,7 @@ const gochi = Gochi_Hand({ subsets: ["latin"], weight: "400", variable: "--font-
 
 export const metadata = {
   title: 'This Teenage Life',
-  description: 'With approximately 50 teen participants and hundreds of thousands of listeners, we help teens throughout the world develop communication skills, authentic community, and a sense of purpose.',
+  description: 'With approximately 50 teen contributors and hundreds of thousands of listeners, we help teens throughout the world develop communication skills, authentic community, and a sense of purpose.',
 }
 
 export default function RootLayout({ children }) {

@@ -420,7 +420,7 @@ export default function Home() {
           </span>{" "}
           <br />
           <br />
-          With approximately 50 teen participants and hundreds of thousands of
+          With approximately 50 teen contributors and hundreds of thousands of
           listeners, we help teens throughout the world develop communication
           skills, authentic community, and a sense of purpose.
         </div>
@@ -592,7 +592,7 @@ export default function Home() {
             </span>{" "}
             <br />
             <br />
-            With approximately 50 teen participants and hundreds of thousands of
+            With approximately 50 teen contributors and hundreds of thousands of
             listeners, we help teens throughout the world develop communication
             skills, authentic community, and a sense of purpose.
           </div>
