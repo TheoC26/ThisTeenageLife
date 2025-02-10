@@ -16,7 +16,7 @@ export default function EpisodeDetails({ params }) {
       try {
         const q = query(
           collection(db, "episode"),
-          where("name", "==", decodeURIComponent(params.episode))
+          where("name", "==", decodeURIComponent(params.episode).replace(/_/g, " "))
         );
         const querySnapshot = await getDocs(q);
 
@@ -50,7 +50,7 @@ export default function EpisodeDetails({ params }) {
   }, [params.episode]);
 
   const rssFeedEpisode = episodes.find(
-    (ep) => ep.title === decodeURIComponent(params.episode)
+    (ep) => ep.title === decodeURIComponent(params.episode).replace(/_/g, " ")
   );
 
   return (

@@ -3,7 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 
 export async function generateMetadata({ params }) {
-  const episodeName = decodeURIComponent(params.episode);
+  const episodeName = decodeURIComponent(params.episode).replace(/_/g, " ");
 
   // Fetch episode data from Firestore
   const docRef = doc(db, "episode", episodeName);

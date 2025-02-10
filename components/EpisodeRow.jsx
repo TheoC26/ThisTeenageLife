@@ -57,7 +57,7 @@ const EpisodeRow = ({
   }, [currentEpisode]);
 
   return (
-     <Link href={`/episodes/${encodeURIComponent(title)}`} className="episodeRow">
+     <Link href={`/episodes/${encodeURIComponent(title.replace(/ /g, "_"))}`} className="episodeRow">
       <Image src={imgUrl} width={100} height={100} alt="cover image" />
       {/* {hasResource && <div className="resourceIcon">⭐️</div>} */}
       <div>
