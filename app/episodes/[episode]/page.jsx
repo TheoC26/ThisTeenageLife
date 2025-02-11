@@ -11,46 +11,55 @@ export default function EpisodeDetails({ params }) {
   const [transcript, setTranscript] = useState("");
   const { episodes, setEpisodeNumber, episodeNumber, play, setPlay } = useEpisodesv2();
 
-  useEffect(() => {
-    const fetchEpisodeData = async () => {
-      try {
-        const q = query(
-          collection(db, "episode"),
-          where("name", "==", decodeURIComponent(params.episode).replace(/_/g, " "))
-        );
-        const querySnapshot = await getDocs(q);
+  let episodeName = decodeURIComponent(params.episode).replace(/_/g, " ");
+  if (
+    episodeName ===
+    "Grind Culture"
+  ) {
+    episodeName = "Grind Culture: Productivity Pressures, Social Media, and Burnout";
+  }
+    useEffect(() => {
+      const fetchEpisodeData = async () => {
+        try {
+          const q = query(
+            collection(db, "episode"),
+            where(
+              "name",
+              "==",
+              episodeName
+            )
+          );
+          const querySnapshot = await getDocs(q);
 
-        if (!querySnapshot.empty) {
-          const doc = querySnapshot.docs[0];
-          setEpisodeData(doc.data());
+          if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            setEpisodeData(doc.data());
 
-          // Process transcript to insert <br /> tags
-          if (!doc.data().transcript) {
-            return;
+            // Process transcript to insert <br /> tags
+            if (!doc.data().transcript) {
+              return;
+            }
+            const processedTranscript = doc
+              .data()
+              .transcript.split(/(\b\w+\s*\b\w*(?=\s*\:)|\b\w*(?=\:))/g) // Match speaker names or numbers before a colon
+              .map((segment, idx) =>
+                idx % 2 === 1 ? `<br /><br />${segment}` : segment
+              ) // Add <br /> before each speaker change
+              .join("")
+              .trim();
+
+            setTranscript(processedTranscript);
           }
-          const processedTranscript = doc
-            .data()
-            .transcript.split(/(\b\w+\s*\b\w*(?=\s*\:)|\b\w*(?=\:))/g) // Match speaker names or numbers before a colon
-            .map((segment, idx) =>
-              idx % 2 === 1 ? `<br /><br />${segment}` : segment
-            ) // Add <br /> before each speaker change
-            .join("")
-            .trim();
-
-          setTranscript(processedTranscript);
+        } catch (error) {
+          console.error("Error fetching episode data:", error);
         }
-      } catch (error) {
-        console.error("Error fetching episode data:", error);
-      }
-    };
+      };
 
-      
-
-    fetchEpisodeData();
-  }, [params.episode]);
+      fetchEpisodeData();
+    }, [params.episode]);
 
   const rssFeedEpisode = episodes.find(
-    (ep) => ep.title === decodeURIComponent(params.episode).replace(/_/g, " ")
+    (ep) => ep.title === episodeName
   );
 
   return (
