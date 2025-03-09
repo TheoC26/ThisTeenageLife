@@ -110,6 +110,12 @@ const page = () => {
         <h1>Media Features</h1>
         <div className="partnercontainer">
           <Link
+            href="https://www.today.com/video/learn-about-the-mission-behind-global-podcast-this-teenage-life-230558789627"
+            className="partner"
+          >
+            The Today Show
+          </Link>
+          <Link
             href="https://www.brownalumnimagazine.com/articles/2024-03-15/are-the-kids-alright-molly-josephs-%E2%80%9909-this-teenage-life"
             className="partner"
           >

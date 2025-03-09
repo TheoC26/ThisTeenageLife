@@ -485,12 +485,12 @@ export default function Home() {
               <br /> - Cloe Moreno, TTL Artist, CA
             </div> */}
             <Polaroid
-              title={"Teen Vogue"}
+              title={"The Today Show"}
               type={"featured on"}
-              imagePath={"/featuredOn/teenVogue.jpeg"}
+              imagePath={"/featuredOn/todayShow.png"}
               isHome={true}
               slug={
-                "https://www.teenvogue.com/story/how-podcasting-helped-me-cope-with-pandemic-loneliness"
+                "https://www.today.com/video/learn-about-the-mission-behind-global-podcast-this-teenage-life-230558789627"
               }
             />
           </div>
