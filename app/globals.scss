@@ -2290,7 +2290,6 @@ main {
       font-weight: bold;
       color: var(--dark-color);
     }
-
   }
 }
 .blogPostPage {
@@ -2934,21 +2933,29 @@ main {
       transform: scale(1.02);
       z-index: 1;
     }
-
-    input[id="seasons-5"]:checked ~ .glider {
+    input[id="seasons-8"]:checked ~ .glider {
       transform: translateX(0);
     }
-    input[id="seasons-4"]:checked ~ .glider {
+    input[id="seasons-7"]:checked ~ .glider {
       transform: translateX(100%);
     }
-    input[id="seasons-3"]:checked ~ .glider {
+    input[id="seasons-6"]:checked ~ .glider {
       transform: translateX(200%);
     }
-    input[id="seasons-2"]:checked ~ .glider {
+    input[id="seasons-5"]:checked ~ .glider {
       transform: translateX(300%);
     }
-    input[id="seasons-1"]:checked ~ .glider {
+    input[id="seasons-4"]:checked ~ .glider {
       transform: translateX(400%);
+    }
+    input[id="seasons-3"]:checked ~ .glider {
+      transform: translateX(500%);
+    }
+    input[id="seasons-2"]:checked ~ .glider {
+      transform: translateX(600%);
+    }
+    input[id="seasons-1"]:checked ~ .glider {
+      transform: translateX(700%);
     }
 
     // input[type="radio"]:checked + label {
@@ -3061,27 +3068,30 @@ main {
         z-index: 1;
       }
 
-      input[id="seasons-7"]:checked ~ .glider {
-        transform: translateX(0);
-      }
-      input[id="seasons-6"]:checked ~ .glider {
-        transform: translateX(100%);
-      }
-      input[id="seasons-5"]:checked ~ .glider {
-        transform: translateX(200%);
-      }
-      input[id="seasons-4"]:checked ~ .glider {
-        transform: translateX(300%);
-      }
-      input[id="seasons-3"]:checked ~ .glider {
-        transform: translateX(400%);
-      }
-      input[id="seasons-2"]:checked ~ .glider {
-        transform: translateX(500%);
-      }
-      input[id="seasons-1"]:checked ~ .glider {
-        transform: translateX(600%);
-      }
+      input[id="seasons-8"]:checked ~ .glider {
+      transform: translateX(0);
+    }
+    input[id="seasons-7"]:checked ~ .glider {
+      transform: translateX(100%);
+    }
+    input[id="seasons-6"]:checked ~ .glider {
+      transform: translateX(200%);
+    }
+    input[id="seasons-5"]:checked ~ .glider {
+      transform: translateX(300%);
+    }
+    input[id="seasons-4"]:checked ~ .glider {
+      transform: translateX(400%);
+    }
+    input[id="seasons-3"]:checked ~ .glider {
+      transform: translateX(500%);
+    }
+    input[id="seasons-2"]:checked ~ .glider {
+      transform: translateX(600%);
+    }
+    input[id="seasons-1"]:checked ~ .glider {
+      transform: translateX(700%);
+    }
 
       // input[type="radio"]:checked + label {
       //   background-color: white;
@@ -5673,7 +5683,8 @@ body {
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
   width: 0%;
-  animation: typing 1s 0.5s steps(40, end) forwards, blink-caret 0.6s step-end infinite;
+  animation: typing 1s 0.5s steps(40, end) forwards,
+    blink-caret 0.6s step-end infinite;
 }
 
 .pagination-controls {

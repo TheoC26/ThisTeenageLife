@@ -15,7 +15,7 @@ const episodes = () => {
   const urlSearchValue = searchParams.get("search");
   const { episodes, setEpisodeNumber, episode, play, setPlay, episodeNumber } =
     useEpisodesv2();
-  const [season, setSeason] = useState(7);
+  const [season, setSeason] = useState(8);
   const [isSearching, setIsSearching] = useState(false);
   const [search, setSearch] = useState("");
   const [resources, setResources] = useState([]);
@@ -84,6 +84,15 @@ const episodes = () => {
           <div className="season-outer">
             <div className="season">season:</div>
             <div className="seasons-container">
+              <input
+                type="radio"
+                id="seasons-8"
+                name="seasons"
+                onChange={() => setSeason(8)}
+              />
+              <label className="season" for="seasons-8">
+                8
+              </label>
               <input
                 type="radio"
                 id="seasons-7"
