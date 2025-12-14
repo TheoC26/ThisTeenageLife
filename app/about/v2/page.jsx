@@ -83,7 +83,7 @@ const about = () => {
           height={100}
         />
       </div>
-      <div>change16</div>
+      <div>change18</div>
     </main>
   );
 };
